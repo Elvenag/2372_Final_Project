@@ -1,0 +1,8 @@
+.vs/
+Debug/
+Release/
+obj/
+bin/
+*.pdb
+*.csproj.user
+SOSEG/App_Data/CTGS1_log.ldf

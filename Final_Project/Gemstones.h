@@ -83,8 +83,13 @@ class Emerald : public Card{
 		void print(ostream& out);
 		friend ostream& operator<<(ostream& os, const Card& c);
 };
-/*
-class IllegalType : public execption{
-	
-}*/
+
+class IllegalType : public exception{
+	string msg;
+	public:
+		IllegalType(string s):msg(s){};
+		string getMsg(){
+			return msg;
+		}
+};
 #endif

@@ -13,3 +13,5 @@ CSI2372-Final-Project/Final-Project/Final-Project.VC.VC.opendb
 Final_Project/Final_Project.vcxproj
 *.opendb
 Final_Project.VC.db
+*.o
+Final_Project/Makefile.win

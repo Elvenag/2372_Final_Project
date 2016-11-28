@@ -16,6 +16,7 @@ using std::string;
 
 int main(){
 	string answer;
+	Deck d;
 	while (true) {
 		cout << "Load game or new? (load or new)" << endl;
 		cin >> answer;
@@ -31,11 +32,20 @@ int main(){
 			cin >> answer;
 			Player P2(answer);
 			CardFactory cf;
-			Deck d = cf.getDeck();
+			d = cf.getDeck();
 			for (int i = 1; i <= 5; i++) {
-				P1.
+				P1.PlayerHand += d.draw();
+				P2.PlayerHand += d.draw();
 			}
 			break;
+		}
+		while (d.size > 0) {
+			cout << "Type p to pause, anything else to continue." << endl;
+			cin >> answer;
+			if (answer == "p") {
+				//save and quit
+			}
+
 		}
 	}
 

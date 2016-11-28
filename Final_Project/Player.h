@@ -19,9 +19,10 @@ class Player{
 	string PlayerName;
 	int coins;
 	int MaxNumChains;
-	Hand PlayerHand;
+	
 	//list<Chain<Card*>> PlayerChain;
 	public:
+		Hand PlayerHand;
 		Player(string& s);
 		Player(istream & is, CardFactory* cf);
 		string getName();

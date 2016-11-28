@@ -12,6 +12,7 @@ Player CLASS HEADER FILE
 #include <list>
 #include "Hand.h"
 #include "Chain.h"
+#include "CardFactory.h"
 using namespace std;
 
 class Player{
@@ -22,7 +23,7 @@ class Player{
 	list<Chain<Card*>> PlayerChain;
 	public:
 		Player(string& s);
-		//Player(istream & is, CardFactory* cf)
+		Player(istream & is, CardFactory* cf)
 		string getName();
 		int getNumCoins();
 		Player& operator+=(int num);

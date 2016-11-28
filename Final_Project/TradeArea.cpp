@@ -49,3 +49,8 @@ ostream& operator<<(ostream &os,const TradeArea& ta){
 	}
 		return os;
 }
+
+TradeArea::~TradeArea(){
+	for (std::size_t i = 0; i < area.size(); i++)
+		delete area[i];
+}

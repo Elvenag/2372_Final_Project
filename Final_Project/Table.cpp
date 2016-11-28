@@ -34,7 +34,7 @@ void Table::print(ostream& os){
 }
 */
 
-/*
+
 ostream& operator<<(ostream &os,const Table& t){
 	for(auto i : t.Players){
 		os << i << endl;
@@ -43,4 +43,4 @@ ostream& operator<<(ostream &os,const Table& t){
 	os << t.GTS << endl;
 	return os;
 }
-*/
+

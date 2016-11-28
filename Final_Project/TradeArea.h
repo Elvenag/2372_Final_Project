@@ -23,6 +23,7 @@ class TradeArea{
 		bool legal(Card* c);
 		Card* trade(string s);
 		int numCards();
+		~TradeArea();
 		friend ostream& operator<<(ostream& os, const TradeArea& ta);
 };
 

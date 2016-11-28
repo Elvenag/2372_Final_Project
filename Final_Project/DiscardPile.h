@@ -17,6 +17,7 @@ class DiscardPile {
 	vector<Card*> dp;
 public:
 	DiscardPile& operator +=(Card* c);
+	~DiscardPile();
 	Card* pickUp();
 	Card* top();
 	void print(std::ostream& os);

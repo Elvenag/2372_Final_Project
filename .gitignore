@@ -11,3 +11,5 @@ CSI2372-Final-Project/Final-Project/Final-Project/Final-Project.vcxproj
 CSI2372-Final-Project/Final-Project/Final-Project.VC.VC.opendb
 *.filters
 Final_Project/Final_Project.vcxproj
+*.opendb
+Final_Project.VC.db

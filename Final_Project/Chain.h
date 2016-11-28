@@ -18,6 +18,7 @@ template <class T> class Chain : public vector<T*>{
 	class T::value_type cardType;
 public:
 	Chain<T>& operator+=(Card* c);
+	~Chain();
 	int sell();
 	ostream& operator<<(ostream& os);
 	Chain( std::istream& in, CardFactory* cf);
@@ -35,6 +36,14 @@ inline Chain<Card>& Chain<Card>::operator+=(Card* c)
 		throw std::invalid_argument("Invalid type for this chain");
 	}
 	return *this;
+}
+
+template<class T>
+inline Chain<T>::~Chain()
+{
+	for (std::size_t i = 0; i < size(); i++) {
+		delete at(i);
+	}
 }
 
 inline int Chain<Card>::sell()

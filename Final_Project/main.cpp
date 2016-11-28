@@ -21,7 +21,7 @@ int main(){
 		cout << "Load game or new? (load or new)" << endl;
 		cin >> answer;
 		if (answer == "load") {
-			//load game
+			//TODO: load game
 			break;
 		}
 		else if (answer == "new") {
@@ -43,7 +43,10 @@ int main(){
 			cout << "Type p to pause, anything else to continue." << endl;
 			cin >> answer;
 			if (answer == "p") {
-				//save and quit
+				//TODO: save and quit
+			}
+			else {
+				
 			}
 
 		}

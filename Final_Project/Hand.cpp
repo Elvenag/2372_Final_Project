@@ -54,5 +54,7 @@ ostream& operator<<(ostream &os,const Hand& h){
 }
 
 Hand::~Hand(){
-	delete &PlayHand;
+	while(!PlayHand.empty()){
+		PlayHand.pop();
+	}
 }

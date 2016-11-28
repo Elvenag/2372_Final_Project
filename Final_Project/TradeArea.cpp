@@ -51,5 +51,7 @@ ostream& operator<<(ostream &os,const TradeArea& ta){
 }
 
 TradeArea::~TradeArea(){
-	delete &area;
+	while(!area.empty()){
+		area.pop_front();
+	}
 }

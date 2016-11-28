@@ -16,8 +16,8 @@ Hand CLASS HEADER FILE
 using namespace std;
 
 class Hand{
-	queue <Card*> PlayHand;
 	public:
+		queue <Card*> PlayHand;	
 		Hand(istream& is, CardFactory* cf);
 		Hand() = default;
 		Hand& operator+=(Card* c);

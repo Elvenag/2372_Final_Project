@@ -23,7 +23,7 @@ class Player{
 	//list<Chain<Card*>> PlayerChain;
 	public:
 		Player(string& s);
-		Player(istream & is, CardFactory* cf)
+		Player(istream & is, CardFactory* cf);
 		string getName();
 		int getNumCoins();
 		Player& operator+=(int num);

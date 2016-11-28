@@ -1,3 +1,10 @@
+/*
+CARD GAME PROJECT
+Mathis Marcotte, 7677347
+Mathieu Perron, 7698299
+DiscardPile CLASS CPP FILE
+*/
+
 #include "DiscardPile.h"
 
 DiscardPile & DiscardPile::operator+=(Card * c)

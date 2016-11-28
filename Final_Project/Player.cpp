@@ -25,6 +25,11 @@ int Player::getNumCoins(){
 int Player::getMaxNumChains(){
 	return MaxNumChains;
 }
+
+Player& operator+=(int num){
+	this.coins += num;
+	return *this;
+}
 /*
 int Player::getNumChains(){
 	int cntr = 0;
@@ -52,3 +57,4 @@ void Player::printHand(ostream& os, bool b){
 	}
 }
 	
+//friend ostream& operator<<(ostream& os, const Player& p);

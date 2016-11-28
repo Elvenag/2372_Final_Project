@@ -83,5 +83,8 @@ class Emerald : public Card{
 		void print(ostream& out);
 		friend ostream& operator<<(ostream& os, const Card& c);
 };
-
+/*
+class IllegalType : public execption{
+	
+}*/
 #endif

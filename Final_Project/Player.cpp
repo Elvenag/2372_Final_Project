@@ -10,9 +10,8 @@ Player CLASS CPP FILE
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-	Chain c1,c2;
-	PlayerChains.push_back(c1);
-	PlayerChains.push_back(c2);
+	PlayerChain.push_back(new Chain<Card*>);
+	PlayerChain.push_back(new Chain<Card*>);
 };
 
 string Player::getName(){
@@ -29,8 +28,8 @@ int Player::getMaxNumChains(){
 /*
 int Player::getNumChains(){
 	int cntr = 0;
-	for(int i = 0; i < PlayerChains.length() ; i++){
-		if(!PlayerChain[i].empty){
+	for(list<Chain<Card*>>::iterator it = PlayerChain.begin(); i < PlayerChains.end() ; i++){
+		if(!*it.empty()){
 			cntr++;
 		}
 	}
@@ -41,8 +40,7 @@ void Player::buyThirdChain(){
 	if(MaxNumChains == 2 && coins >= 2){
 		MaxNumChains++;
 		coins = coins - 2;
-		Chain c;
-		PlayerChains.push_back(c);
+		PlayerChains.push_back(Chain<Card*>);
 	}
 }*/
 

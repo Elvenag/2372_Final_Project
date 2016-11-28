@@ -19,7 +19,7 @@ class Player{
 	int coins;
 	int MaxNumChains;
 	Hand PlayerHand;
-	list<Chain<Card*>> PlayerChain;
+	//list<Chain<T>> PlayerChains;
 	public:
 		Player(string& s);
 		//Player(istream & is, CardFactory* cf)
@@ -28,7 +28,7 @@ class Player{
 		Player& operator+=(int num);
 		int getMaxNumChains();
 		//int getNumChains();
-		//Chain_Base& operator[](int i);
+		//Chain& operator[](int i);
 		void buyThirdChain();
 		void printHand(ostream& os, bool b);
 		friend ostream& operator<<(ostream& os, const Player& p);

@@ -10,8 +10,8 @@ Player CLASS CPP FILE
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-	PlayerChain.push_back(new Chain<Card*>);
-	PlayerChain.push_back(new Chain<Card*>);
+	/*PlayerChain.push_back(new Chain<Card*>);
+	PlayerChain.push_back(new Chain<Card*>);*/
 };
 
 string Player::getName(){

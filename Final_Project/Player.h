@@ -20,7 +20,7 @@ class Player{
 	int coins;
 	int MaxNumChains;
 	Hand PlayerHand;
-	list<Chain<Card*>> PlayerChain;
+	//list<Chain<Card*>> PlayerChain;
 	public:
 		Player(string& s);
 		Player(istream & is, CardFactory* cf)

@@ -16,7 +16,7 @@ Hand CLASS HEADER FILE
 using namespace std;
 
 class Hand{
-	queue <Card*> playhand;
+	queue <Card*> PlayHand;
 	public:
 		Hand(istream& is, CardFactory* cf);
 		Hand() = default;
@@ -24,6 +24,7 @@ class Hand{
 		Card* play();
 		Card* top();
 		Card* operator[](int i);
+		~Hand();
 		friend ostream& operator<<(ostream& os, const Hand& h);
 };
 #endif

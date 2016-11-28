@@ -12,17 +12,17 @@ Hand CLASS CPP FILE
 using namespace std;
 
 Card* Hand::play(){
-	Card* c = playhand.front();
-	playhand.pop();
+	Card* c = PlayHand.front();
+	PlayHand.pop();
 	return c;
 }
 
 Card* Hand::top(){
-	return playhand.front();
+	return PlayHand.front();
 }
 
 Hand& Hand::operator+=(Card* c){
-	playhand.push(c);
+	PlayHand.push(c);
 	return *this;
 }
 
@@ -30,25 +30,29 @@ Card* Hand::operator[](int i){
 	queue <Card*> temphand;
 	Card* elem;
 	for(int j = 0 ; j < i ; j++){
-		temphand.push(playhand.front());
-		playhand.pop();
+		temphand.push(PlayHand.front());
+		PlayHand.pop();
 	}
-	elem = playhand.front();
-	playhand.pop();
-	for(int j = 0; j < playhand.size() ; j++){
-		temphand.push(playhand.front());
-		playhand.pop();
+	elem = PlayHand.front();
+	PlayHand.pop();
+	for(int j = 0; j < PlayHand.size() ; j++){
+		temphand.push(PlayHand.front());
+		PlayHand.pop();
 	}
-	playhand = temphand;
+	PlayHand = temphand;
 	return elem;
 }
 
 ostream& operator<<(ostream &os,const Hand& h){
 	queue <Card*> temphand;
-	temphand = h.playhand;
-    for(int i = 0; i < h.playhand.size();i++){
+	temphand = h.PlayHand;
+    for(int i = 0; i < h.PlayHand.size();i++){
     	os << temphand.front() << " ";
     	temphand.pop();
     }
     return os;
+}
+
+Hand::~Hand(){
+	delete &PlayHand;
 }

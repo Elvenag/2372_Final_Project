@@ -6,3 +6,8 @@ bin/
 *.pdb
 *.csproj.user
 SOSEG/App_Data/CTGS1_log.ldf
+CSI2372-Final-Project/Final-Project/Final-Project.VC.db
+CSI2372-Final-Project/Final-Project/Final-Project/Final-Project.vcxproj
+CSI2372-Final-Project/Final-Project/Final-Project.VC.VC.opendb
+*.filters
+Final_Project/Final_Project.vcxproj

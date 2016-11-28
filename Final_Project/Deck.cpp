@@ -8,6 +8,12 @@ Deck CLASS CPP FILE
 #include "Deck.h"
 #include "CardFactory.h"
 
+Deck::~Deck()
+{
+	for (std::size_t i = 0; i < size(); i++)
+		delete at(i);
+}
+
 Card * Deck::draw()
 {
 	auto drawn = front();

@@ -16,6 +16,7 @@ class CardFactory;
 class Deck : public vector<Card*>{
 public:
 	Deck() = default;
+	~Deck();
 	Card* draw();
 	ostream& operator<<(ostream& os);
 	Deck(istream& in, CardFactory* cf);

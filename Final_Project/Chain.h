@@ -18,7 +18,47 @@ public:
 	Chain_Base<T>& operator+=(Card* c);
 };
 
+template<class Card> class Chain {};
 
+template<> class Chain<Ruby> : public Chain_Base<Ruby> {
+public:
+	int sell();
+};
+
+template<> class Chain<Quartz> : public Chain_Base<Quartz> {
+public:
+	int sell();
+};
+
+template<> class Chain<Hematite> : public Chain_Base<Hematite> {
+public:
+	int sell();
+};
+
+template<> class Chain<Obsidian> : public Chain_Base<Obsidian> {
+public:
+	int sell();
+};
+
+template<> class Chain < Malachite > : public Chain_Base<Malachite> {
+public:
+	int sell();
+};
+
+template<> class Chain<Turquoise> : public Chain_Base<Turquoise> {
+public:
+	int sell();
+};
+
+template<> class Chain<Amethyst> : public Chain_Base<Amethyst> {
+public:
+	int sell();
+};
+
+template<> class Chain<Emerald> : public Chain_Base<Emerald> {
+public:
+	int sell();
+};
 
 #endif
 
@@ -38,3 +78,42 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 	return *this;
 }
 
+inline int Chain<Ruby>::sell()
+{
+	return 0;
+}
+
+inline int Chain<Quartz>::sell() 
+{
+	return 0;
+}
+
+inline int Chain<Hematite>::sell()
+{
+	return 0;
+}
+
+inline int Chain<Obsidian>::sell()
+{
+	return 0;
+}
+
+inline int Chain<Malachite>::sell()
+{
+	return 0;
+}
+
+inline int Chain<Turquoise>::sell()
+{
+	return 0;
+}
+
+inline int Chain<Amethyst>::sell()
+{
+	return 0;
+}
+
+inline int Chain <Emerald> ::sell()
+{
+	return 0;
+}

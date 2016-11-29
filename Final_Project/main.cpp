@@ -4,18 +4,10 @@ using std::cin;
 using std::endl;
 #include <string>
 using std::string;
-#include "Gemstones.h"
-#include "CardFactory.h"
-#include "Deck.h"
-#include "DiscardPile.h"
-#include "Hand.h"
-#include "Player.h"
-#include "Chain.h"
-#include "Table.h"
-#include "TradeArea.h"
+
 
 int main(){
-	string answer;
+/*	string answer;
 	Deck d;
 	while (true) {
 		cout << "Load game or new? (load or new)" << endl;
@@ -39,7 +31,7 @@ int main(){
 			}
 			break;
 		}
-		while (d.size > 0) {
+		while (d.size() > 0) {
 			cout << "Type p to pause, anything else to continue." << endl;
 			cin >> answer;
 			if (answer == "p") {
@@ -52,5 +44,5 @@ int main(){
 		}
 	}
 
-
+	*/
 }

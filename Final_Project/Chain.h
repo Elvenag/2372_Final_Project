@@ -7,59 +7,34 @@ Chain CLASS HEADER FILE
 #ifndef Chain_H
 #define Chain_H
 
-#include "Gemstones.h"
 #include "CardFactory.h"
 #include <vector>
 using std::vector;
 
-//Need a Base_Chain
+//Chain_Base
 
-template <class T> class Chain : public vector<T*>{
-	class T::value_type cardType;
+template<class T> class Chain_Base: private vector<T*>{
 public:
-	Chain<T>& operator+=(Card* c);
-	~Chain();
-	int sell();
-	ostream& operator<<(ostream& os);
-	Chain( std::istream& in, CardFactory* cf);
+	Chain_Base<T>& operator+=(Card* c);
 };
+
+
 
 #endif
 
-inline Chain<Card>& Chain<Card>::operator+=(Card* c)
+template<class T>
+inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 {
-	
 	try {
-		push_back(c);
+		if (typeid(c) == typeid(T))
+			push_back(c);
+		else {
+			throw IllegalType("Card type does not match Chain type.");
+		}
 	}
-	catch(const std::invalid_argument& ia) {
-		throw std::invalid_argument("Invalid type for this chain");
+	catch (IllegalType i) {
+		cout << i.getMsg();
 	}
 	return *this;
 }
 
-template<class T>
-inline Chain<T>::~Chain()
-{
-	for (std::size_t i = 0; i < size(); i++) {
-		delete at(i);
-	}
-}
-
-inline int Chain<Card>::sell()
-{
-	return cardType.getCardsPerCoin(size());
-}
-
-template<class T>
-inline ostream & Chain<Card>::operator<<(ostream & os)
-{
-	os << cardType.getName() << "      ";
-	for (std::size_t i = 0; i < size(); i++)
-		os << this->at(i) << " ";
-}
-
-inline Chain<Card>::Chain(std::istream & in, CardFactory * cf)
-{
-	//TODO
-}

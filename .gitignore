@@ -15,3 +15,5 @@ Final_Project/Final_Project.vcxproj
 Final_Project.VC.db
 *.o
 Final_Project/Makefile.win
+Final_Project/Project2.layout
+*.dev

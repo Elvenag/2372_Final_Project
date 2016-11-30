@@ -26,8 +26,8 @@ int Player::getMaxNumChains(){
 	return MaxNumChains;
 }
 
-Player& operator+=(int num){
-	this.coins += num;
+Player& Player::operator+=(int num){
+	coins += num;
 	return *this;
 }
 /*

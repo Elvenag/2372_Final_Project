@@ -113,17 +113,6 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 	return *this;
 }
 
-//old insertion operator
-/*template<class Card>
-inline ostream & Chain_Base<Card>::operator<<(ostream & os)
-{
-	os << cardType.getName();
-	for (std::size_t i = 0; i < this->size(); i++) {
-		os << " ";
-		cardType.print(os);
-	}
-	return os;
-}*/
 
 //template<class Card*>
 inline ostream& operator<<(ostream & os,const Chain_Base<Card*>& c)

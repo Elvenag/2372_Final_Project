@@ -62,7 +62,7 @@ void Player::printHand(ostream& os, bool b){
 		os << PlayerHand.top();
 	}
 }
-	
+
 ostream& operator<<(ostream& os, const Player& p){
 	os << p.PlayerName << p.coins << " coins" << endl;
 	list<Chain_Base<Card*>>::const_iterator it;

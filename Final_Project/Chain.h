@@ -13,10 +13,9 @@ using std::vector;
 
 //Chain_Base
 
-template<class T> class Chain_Base: public vector<T*>{
-protected:
-	T cardType;
+template<class T> class Chain_Base: public vector<T*>{	
 public:
+	T cardType;
 	Chain_Base<T>& operator+=(Card* c);
 	friend ostream& operator<<(ostream& os,const Chain_Base<Card*>& c);
 	int sell();

@@ -21,8 +21,9 @@ class Player{
 	int coins;
 	int MaxNumChains;
 	
-	list<Chain_Base<Card*>> PlayerChains;
+	
 	public:
+		list<Chain_Base<Card*>> PlayerChains;
 		Hand PlayerHand;
 		Player(string& s);
 		Player(istream & is, CardFactory* cf);

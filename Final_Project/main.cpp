@@ -20,10 +20,12 @@ int main(){
 		else if (answer == "new") {
 			cout << "Player 1's name: " << endl;
 			cin >> answer;
-			t.Players[0] = new Player(answer);
+			Player p1 = Player(answer);
+			t.Players[0] = p1;
 			cout << "Player 2's name: " << endl;
 			cin >> answer;
-			t.Players[1] = new Player(answer);
+			Player p2 = Player(answer);
+			t.Players[1] = p2;
 			CardFactory cf;
 			t.Library = cf.getDeck();
 			for (int i = 1; i <= 5; i++) {
@@ -40,8 +42,8 @@ int main(){
 			}
 			else {
 				for (int i = 0; i < 2; i++){
-					//Display Table?
-					if ((t.Players[i].getCoins() >= 3)&&(t.Players[i].getMaxNumChains == 2)){
+					cout << t;
+					if ((t.Players[i].getNumCoins() >= 3)&&(t.Players[i].getMaxNumChains == 2)){
 						cout << "Buy new chain? (Y or N)"<<endl;
 						cin >> answer;
 						while(true){
@@ -55,6 +57,30 @@ int main(){
 						}
 					}
 					t.Players[i].PlayerHand+= t.Library.draw();
+					if (t.GTS.numCards() != 0) {
+						cout << t.GTS;
+						while (true) {
+							cout << "Insert name of card you wish to trade for or done" << endl;
+							cin >> answer;
+							if (answer == "done") {
+								break;
+							}
+							else {
+								t.GTS.trade(answer);
+							}
+						}
+					}
+					bool played = false;
+					auto c = t.Players[i].PlayerHand.play();
+					for (std::size_t n = 0; n < t.Players[i].PlayerChains.size(); i++) {
+						if (typeid(t.Players[i][n].cardType) == typeid(c)) {
+							t.Players[i][n] += c;
+							played = true;
+						}
+					}
+					if (played = false) {
+						
+					}
 				}
 			}
 

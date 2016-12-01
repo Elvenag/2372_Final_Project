@@ -18,7 +18,7 @@ protected:
 	T cardType;
 public:
 	Chain_Base<T>& operator+=(Card* c);
-	ostream& operator<<(ostream& os);
+	friend ostream& operator<<(ostream& os,const Chain_Base<Card*>& c);
 	int sell();
 };
 
@@ -113,13 +113,25 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 	return *this;
 }
 
-template<class Card>
+//old insertion operator
+/*template<class Card>
 inline ostream & Chain_Base<Card>::operator<<(ostream & os)
 {
 	os << cardType.getName();
 	for (std::size_t i = 0; i < this->size(); i++) {
 		os << " ";
 		cardType.print(os);
+	}
+	return os;
+}*/
+
+//template<class Card*>
+inline ostream& operator<<(ostream & os,const Chain_Base<Card*>& c)
+{
+	os << c.cardType->getName();
+	for (std::size_t i = 0; i < c.size(); i++) {
+		os << " ";
+		c.cardType->print(os);
 	}
 	return os;
 }

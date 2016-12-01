@@ -10,6 +10,7 @@ Player CLASS HEADER FILE
 #include <string>
 #include <iostream>
 #include <list>
+#include <vector>
 #include "Hand.h"
 #include "Chain.h"
 #include "CardFactory.h"
@@ -20,7 +21,7 @@ class Player{
 	int coins;
 	int MaxNumChains;
 	
-	list<Chain_Base<Card*>> PlayerChain;
+	list<Chain_Base<Card*>> PlayerChains;
 	public:
 		Hand PlayerHand;
 		Player(string& s);
@@ -29,8 +30,8 @@ class Player{
 		int getNumCoins();
 		Player& operator+=(int num);
 		int getMaxNumChains();
-		//int getNumChains();
-		//Chain_Base& operator[](int i);
+		int getNumChains();
+		Chain_Base<Card*>& operator[](int i);
 		void buyThirdChain();
 		void printHand(ostream& os, bool b);
 		friend ostream& operator<<(ostream& os, const Player& p);

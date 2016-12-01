@@ -87,7 +87,7 @@ inline int Chain_Base<Card>::sell()
 	int result = 0;
 	for (int i = 0; i <= 4; i++) {
 		cards = cardType.getCardsPerCoin(i);
-		if (cards > size()) {
+		if (cards > this->size()) {
 			break;
 		}
 		else {
@@ -102,7 +102,7 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 {
 	try {
 		if (typeid(c) == typeid(T))
-			push_back(c);
+			this->push_back(c);
 		else {
 			throw IllegalType("Card type does not match Chain type.");
 		}
@@ -117,7 +117,7 @@ template<class Card>
 inline ostream & Chain_Base<Card>::operator<<(ostream & os)
 {
 	os << cardType.getName();
-	for (std::size_t i = 0; i < size(); i++) {
+	for (std::size_t i = 0; i < this->size(); i++) {
 		os << " ";
 		cardType.print(os);
 	}

@@ -4,10 +4,11 @@ using std::cin;
 using std::endl;
 #include <string>
 using std::string;
+#include"Table.h"
 
 
 int main(){
-/*	string answer;
+	string answer;
 	Table t;
 	while (true) {
 		cout << "Load game or new? (load or new)" << endl;
@@ -26,8 +27,8 @@ int main(){
 			CardFactory cf;
 			t.Library = cf.getDeck();
 			for (int i = 1; i <= 5; i++) {
-				P1.PlayerHand += t.Library.draw();
-				P2.PlayerHand += t.Library.draw();
+				t.Players[0].PlayerHand += t.Library.draw();
+				t.Players[1].PlayerHand += t.Library.draw();
 			}
 			break;
 		}
@@ -38,11 +39,27 @@ int main(){
 				//TODO: save and quit
 			}
 			else {
-				
+				for (int i = 0; i < 2; i++){
+					//Display Table?
+					if ((t.Players[i].getCoins() >= 3)&&(t.Players[i].getMaxNumChains == 2)){
+						cout << "Buy new chain? (Y or N)"<<endl;
+						cin >> answer;
+						while(true){
+							if(answer == "Y"){
+								t.Players[i].buyThirdChain();
+								break;
+							}
+							if(answer == "N"){
+								break;
+							}
+						}
+					}
+					t.Players[i].PlayerHand+= t.Library.draw();
+				}
 			}
 
 		}
 	}
 
-	*/
+	
 }

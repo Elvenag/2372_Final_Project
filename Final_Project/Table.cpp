@@ -37,9 +37,9 @@ void Table::print(ostream& os){
 
 
 ostream& operator<<(ostream &os,const Table& t){
-	/*for(auto i : t.Players){
+	for(auto i : t.Players){
 		os << i << endl;
-	}*/
+	}
 	os << t.Grave << endl;
 	os << t.GTS << endl;
 	return os;

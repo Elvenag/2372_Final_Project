@@ -21,7 +21,7 @@ class Table{
 		DiscardPile Grave;
 		TradeArea GTS;
 		bool win(string& s);
-		//void print(ostream& os);
+		void print(ostream& os);
 		friend ostream& operator<<(ostream& os, const Table& t);
 		Table(istream& is, CardFactory* cf);
 };

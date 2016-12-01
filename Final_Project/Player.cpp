@@ -57,4 +57,11 @@ void Player::printHand(ostream& os, bool b){
 	}
 }
 	
-//friend ostream& operator<<(ostream& os, const Player& p);
+ostream& operator<<(ostream& os, const Player& p){
+	os << p.PlayerName << p.coins << " coins" << endl;
+	/*list<Chain<Card*>>::const_iterator it;
+	for(it=p.PlayerChain.begin(); it!=p.PlayerChain.end(); it++){
+		os << *it;
+	}*/
+	return os;
+}

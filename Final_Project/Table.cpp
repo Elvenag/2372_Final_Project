@@ -24,16 +24,16 @@ bool Table::win(std::string& s){
 	}
 }
 
-/*
+
 void Table::print(ostream& os){
-	for(auto i : t.Players){
+	for(auto i : Players){
 		os << i << endl;
 	}
-	os << t.Library << endl;
-	os << t.Grave << endl;
-	os << t.GTS << endl;
+	os << Library << endl;
+	os << Grave << endl;
+	os << GTS << endl;
 }
-*/
+
 
 
 ostream& operator<<(ostream &os,const Table& t){

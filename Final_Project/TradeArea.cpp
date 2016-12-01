@@ -44,10 +44,11 @@ int TradeArea::numCards(){
 }
 
 ostream& operator<<(ostream &os,const TradeArea& ta){
-	for(int i = 0;i < ta.area.size(); i++){
-		os << 1 << " ";
+	list<Card*>::const_iterator it;
+	for(it=ta.area.begin(); it!=ta.area.end(); it++){
+		os << *it;
 	}
-		return os;
+	return os;
 }
 
 TradeArea::~TradeArea(){

@@ -19,9 +19,9 @@ public:
 	DiscardPile& operator +=(Card* c);
 	~DiscardPile();
 	Card* pickUp();
-	Card* top();
+	Card* top() const;
 	void print(std::ostream& os);
-	ostream& operator<<(ostream& os);
+	friend ostream& operator<<(ostream& os, const DiscardPile& Grave);
 	DiscardPile(std::istream& is, CardFactory* cf);
 };
 

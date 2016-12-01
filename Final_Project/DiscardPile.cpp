@@ -20,7 +20,7 @@ Card * DiscardPile::pickUp()
 	return drawn;
 }
 
-Card * DiscardPile::top()
+Card * DiscardPile::top() const
 {
 	auto top = dp.back();
 	return top;
@@ -32,8 +32,7 @@ void DiscardPile::print(std::ostream & os)
 		os << c;
 }
 
-ostream & DiscardPile::operator<<(ostream & os)
-{
-	os << top();
+ostream& operator<<(ostream& os,const DiscardPile& Grave){
+	os << Grave.top();
 	return os;
 }

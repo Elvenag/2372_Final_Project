@@ -18,7 +18,7 @@ public:
 	Deck() = default;
 	~Deck();
 	Card* draw();
-	ostream& operator<<(ostream& os);
+	friend ostream& operator<<(ostream& os, const Deck& d);
 	Deck(istream& in, CardFactory* cf);
 };
 #endif

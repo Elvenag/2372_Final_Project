@@ -22,7 +22,7 @@ class Table{
 		TradeArea GTS;
 		bool win(string& s);
 		//void print(ostream& os);
-		//friend ostream& operator<<(ostream& os, const Table& t);
+		friend ostream& operator<<(ostream& os, const Table& t);
 		Table(istream& is, CardFactory* cf);
 };
 #endif

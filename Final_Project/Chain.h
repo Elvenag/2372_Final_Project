@@ -13,54 +13,89 @@ using std::vector;
 
 //Chain_Base
 
-template<class T> class Chain_Base: private vector<T*>{
+template<class T> class Chain_Base: public vector<T*>{
+protected:
+	T cardType;
 public:
 	Chain_Base<T>& operator+=(Card* c);
+	ostream& operator<<(ostream& os);
+	int sell();
 };
 
-template<class Card> class Chain {};
+template<class Card> class Chain : public Chain_Base<Card> {};
 
 template<> class Chain<Ruby> : public Chain_Base<Ruby> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);	
 };
 
 template<> class Chain<Quartz> : public Chain_Base<Quartz> {
 public:
-	int sell();
+	Chain(istream& is, CardFactory* cf);
+	
 };
 
 template<> class Chain<Hematite> : public Chain_Base<Hematite> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 template<> class Chain<Obsidian> : public Chain_Base<Obsidian> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 template<> class Chain < Malachite > : public Chain_Base<Malachite> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 template<> class Chain<Turquoise> : public Chain_Base<Turquoise> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 template<> class Chain<Amethyst> : public Chain_Base<Amethyst> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 template<> class Chain<Emerald> : public Chain_Base<Emerald> {
 public:
-	int sell();
+	//int sell();
+	Chain(istream& is, CardFactory* cf);
+
 };
 
 #endif
+
+template<class Card>
+inline int Chain_Base<Card>::sell()
+{
+	int cards = 0;
+	int result = 0;
+	for (int i = 0; i <= 4; i++) {
+		cards = cardType.getCardsPerCoin(i);
+		if (cards > size()) {
+			break;
+		}
+		else {
+			result = cards;
+		}
+	}
+	return result;
+}
 
 template<class T>
 inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
@@ -78,10 +113,34 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 	return *this;
 }
 
+template<class Card>
+inline ostream & Chain_Base<Card>::operator<<(ostream & os)
+{
+	os << cardType.getName();
+	for (std::size_t i = 0; i < size(); i++) {
+		os << " ";
+		cardType.print(os);
+	}
+	return os;
+}
+
+/*
 inline int Chain<Ruby>::sell()
 {
-	return 0;
+	int cards = 0;
+	int result = 0;
+	for (int i = 0; i <= 4; i++) {
+		cards = cardType.getCardsPerCoin(i);
+		if (cards > size()) {
+			break;
+		}
+		else {
+			result = cards;
+		}
+	}
+	return result;
 }
+
 
 inline int Chain<Quartz>::sell() 
 {
@@ -115,5 +174,7 @@ inline int Chain<Amethyst>::sell()
 
 inline int Chain <Emerald> ::sell()
 {
+	
 	return 0;
 }
+*/

@@ -8,7 +8,7 @@ using std::string;
 
 int main(){
 /*	string answer;
-	Deck d;
+	Table t;
 	while (true) {
 		cout << "Load game or new? (load or new)" << endl;
 		cin >> answer;
@@ -19,19 +19,19 @@ int main(){
 		else if (answer == "new") {
 			cout << "Player 1's name: " << endl;
 			cin >> answer;
-			Player P1(answer);
+			t.Players[0] = new Player(answer);
 			cout << "Player 2's name: " << endl;
 			cin >> answer;
-			Player P2(answer);
+			t.Players[1] = new Player(answer);
 			CardFactory cf;
-			d = cf.getDeck();
+			t.Library = cf.getDeck();
 			for (int i = 1; i <= 5; i++) {
-				P1.PlayerHand += d.draw();
-				P2.PlayerHand += d.draw();
+				P1.PlayerHand += t.Library.draw();
+				P2.PlayerHand += t.Library.draw();
 			}
 			break;
 		}
-		while (d.size() > 0) {
+		while (t.Library.size() > 0) {
 			cout << "Type p to pause, anything else to continue." << endl;
 			cin >> answer;
 			if (answer == "p") {

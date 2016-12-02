@@ -15,9 +15,10 @@ using std::vector;
 
 template<class T> class Chain_Base: public vector<T*>{	
 public:
+	Chain_Base() : vector(int, T) {};
 	T cardType;
 	Chain_Base<T>& operator+=(Card* c);
-	friend ostream& operator<<(ostream& os,const Chain_Base<Card*>& c);
+	friend ostream& operator<<(ostream& os,const Chain_Base<Card>& c);
 	int sell();
 };
 
@@ -25,18 +26,20 @@ template<class Card> class Chain : public Chain_Base<Card> {};
 
 template<> class Chain<Ruby> : public Chain_Base<Ruby> {
 public:
-	//int sell();
+	Chain() : Chain_Base() {};
 	Chain(istream& is, CardFactory* cf);	
 };
 
 template<> class Chain<Quartz> : public Chain_Base<Quartz> {
 public:
+	Chain() : Chain_Base() {};
 	Chain(istream& is, CardFactory* cf);
 	
 };
 
 template<> class Chain<Hematite> : public Chain_Base<Hematite> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -44,6 +47,7 @@ public:
 
 template<> class Chain<Obsidian> : public Chain_Base<Obsidian> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -51,6 +55,7 @@ public:
 
 template<> class Chain < Malachite > : public Chain_Base<Malachite> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -58,6 +63,7 @@ public:
 
 template<> class Chain<Turquoise> : public Chain_Base<Turquoise> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -65,6 +71,7 @@ public:
 
 template<> class Chain<Amethyst> : public Chain_Base<Amethyst> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -72,6 +79,7 @@ public:
 
 template<> class Chain<Emerald> : public Chain_Base<Emerald> {
 public:
+	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 

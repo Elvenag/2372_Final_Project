@@ -6,7 +6,6 @@ using std::endl;
 using std::string;
 #include"Table.h"
 
-
 int main(){
 	string answer;
 	Table t;
@@ -72,14 +71,45 @@ int main(){
 					}
 					bool played = false;
 					auto c = t.Players[i].PlayerHand.play();
-					for (std::size_t n = 0; n < t.Players[i].PlayerChains.size(); i++) {
+					for (std::size_t n = 0; n < t.Players[i].getNumChains(); i++) {
 						if (typeid(t.Players[i][n].cardType) == typeid(c)) {
 							t.Players[i][n] += c;
 							played = true;
 						}
 					}
 					if (played = false) {
-						
+						if (t.Players[i].getNumChains < t.Players[i].getMaxNumChains) 
+						{
+							Chain<Emerald> newChain;
+							if (typeid(c) == typeid(new Quartz))
+								Chain<Quartz> newChain;
+							else if (typeid(c) == typeid(new Hematite))
+								Chain<Hematite> newChain;
+							else if (typeid(c) == typeid(new Obsidian))
+								Chain<Obsidian> newChain;
+							else if (typeid(c) == typeid(new Malachite))
+								Chain<Malachite> newChain;
+							else if (typeid(c) == typeid(new Turquoise))
+								Chain<Turquoise> newChain;
+							else if (typeid(c) == typeid(new Ruby))
+								Chain<Ruby> newChain;
+							else if (typeid(c) == typeid(new Amethyst))
+								Chain<Amethyst> newChain;
+							t.Players[i].PlayerChains.push_back(newChain);
+						}
+						else {
+							cout << "Which chain will be sold? (1-" << t.Players[i].getNumChains() <<")" << endl;
+							for (std::list<Chain_Base<Card>>::iterator it = t.Players[i].PlayerChains.begin(); it != t.Players[i].PlayerChains.end(); ++it) {
+								cout << ' ' << *it << endl;
+							}
+							cin >> answer;
+							while (true) {
+								int ianswer;
+								if ((ianswer < t.Players[i].getMaxNumChains) && (ianswer > 0)) {
+									
+								}
+							}
+						}
 					}
 				}
 			}

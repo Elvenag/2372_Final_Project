@@ -42,7 +42,7 @@ int main(){
 			else {
 				for (int i = 0; i < 2; i++){
 					cout << t;
-					if ((t.Players[i].getNumCoins() >= 3)&&(t.Players[i].getMaxNumChains == 2)){
+					if ((t.Players[i].getNumCoins() >= 3)&&(t.Players[i].getMaxNumChains() == 2)){
 						cout << "Buy new chain? (Y or N)"<<endl;
 						cin >> answer;
 						while(true){
@@ -78,7 +78,7 @@ int main(){
 						}
 					}
 					if (played = false) {
-						if (t.Players[i].getNumChains < t.Players[i].getMaxNumChains) 
+						if (t.Players[i].getNumChains() < t.Players[i].getMaxNumChains()) 
 						{
 							Chain<Emerald> newChain;
 							if (typeid(c) == typeid(new Quartz))
@@ -95,18 +95,20 @@ int main(){
 								Chain<Ruby> newChain;
 							else if (typeid(c) == typeid(new Amethyst))
 								Chain<Amethyst> newChain;
-							t.Players[i].PlayerChains.push_back(newChain);
+							t.Players[i].PlayerChains.emplace_back(newChain);
 						}
 						else {
 							cout << "Which chain will be sold? (1-" << t.Players[i].getNumChains() <<")" << endl;
-							for (std::list<Chain_Base<Card>>::iterator it = t.Players[i].PlayerChains.begin(); it != t.Players[i].PlayerChains.end(); ++it) {
+							for (std::list<Chain<Card>>::iterator it = t.Players[i].PlayerChains.begin(); it != t.Players[i].PlayerChains.end(); ++it) {
 								cout << ' ' << *it << endl;
 							}
 							cin >> answer;
 							while (true) {
 								int ianswer;
-								if ((ianswer < t.Players[i].getMaxNumChains) && (ianswer > 0)) {
-									
+								if ((ianswer < t.Players[i].getMaxNumChains()) && (ianswer > 0)) {
+									std::list<Chain<Card>>::iterator it = t.Players[i].PlayerChains.begin();
+									advance(it, ianswer-1);
+									it = t.Players[i].PlayerChains.erase(it);
 								}
 							}
 						}

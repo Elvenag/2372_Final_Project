@@ -10,8 +10,8 @@ Player CLASS CPP FILE
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-	PlayerChains.push_back(Chain_Base<Card>());
-	PlayerChains.push_back(Chain_Base<Card>());
+	PlayerChains.push_back(Chain<Card>());
+	PlayerChains.push_back(Chain<Card>());
 };
 
 string Player::getName(){
@@ -33,7 +33,7 @@ Player& Player::operator+=(int num){
 
 int Player::getNumChains(){
 	int cntr = 0;
-	for(list<Chain_Base<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end() ; it++){
+	for(list<Chain<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end() ; it++){
 		if(!it->empty()){
 			cntr++;
 		}
@@ -41,8 +41,8 @@ int Player::getNumChains(){
 	return cntr;
 }
 
-Chain_Base<Card>& Player::operator[](int i){
-	list<Chain_Base<Card>>::iterator it;
+Chain<Card>& Player::operator[](int i){
+	list<Chain<Card>>::iterator it;
 	advance(it, i);
 	return *it;
 }
@@ -51,7 +51,7 @@ void Player::buyThirdChain(){
 	if(MaxNumChains == 2 && coins >= 2){
 		MaxNumChains++;
 		coins -= 2;
-		PlayerChains.push_back(Chain_Base<Card>());
+		PlayerChains.push_back(Chain<Card>());
 	}
 }
 
@@ -65,7 +65,7 @@ void Player::printHand(ostream& os, bool b){
 
 ostream& operator<<(ostream& os, const Player& p){
 	os << p.PlayerName << p.coins << " coins" << endl;
-	list<Chain_Base<Card>>::const_iterator it;
+	list<Chain<Card>>::const_iterator it;
 	for(it=p.PlayerChains.begin(); it!=p.PlayerChains.end(); it++){
 		os << *it;
 	}

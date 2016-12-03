@@ -23,7 +23,7 @@ class Player{
 	
 	
 	public:
-		list<Chain_Base<Card>> PlayerChains;
+		list<Chain<Card>> PlayerChains;
 		Hand PlayerHand;
 		Player(string& s);
 		Player(istream & is, CardFactory* cf);
@@ -32,7 +32,7 @@ class Player{
 		Player& operator+=(int num);
 		int getMaxNumChains();
 		int getNumChains();
-		Chain_Base<Card>& operator[](int i);
+		Chain<Card>& operator[](int i);
 		void buyThirdChain();
 		void printHand(ostream& os, bool b);
 		friend ostream& operator<<(ostream& os, const Player& p);

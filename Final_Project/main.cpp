@@ -40,22 +40,23 @@ int main(){
 				//TODO: save and quit
 			}
 			else {
-				for (int i = 0; i < 2; i++){
+				for (int i = 0; i < 2; i++) {
+					Player& p = t.Players[i];
 					cout << t;
-					if ((t.Players[i].getNumCoins() >= 3)&&(t.Players[i].getMaxNumChains() == 2)){
-						cout << "Buy new chain? (Y or N)"<<endl;
+					if ((p.getNumCoins() >= 3) && (p.getMaxNumChains() == 2)) {
+						cout << "Buy new chain? (Y or N)" << endl;
 						cin >> answer;
-						while(true){
-							if(answer == "Y"){
-								t.Players[i].buyThirdChain();
+						while (true) {
+							if (answer == "Y") {
+								p.buyThirdChain();
 								break;
 							}
-							if(answer == "N"){
+							if (answer == "N") {
 								break;
 							}
 						}
 					}
-					t.Players[i].PlayerHand+= t.Library.draw();
+					p.PlayerHand += t.Library.draw();
 					if (t.GTS.numCards() != 0) {
 						cout << t.GTS;
 						while (true) {
@@ -69,49 +70,56 @@ int main(){
 							}
 						}
 					}
-					bool played = false;
-					auto c = t.Players[i].PlayerHand.play();
-					for (std::size_t n = 0; n < t.Players[i].getNumChains(); i++) {
-						if (typeid(t.Players[i][n].cardType) == typeid(c)) {
-							t.Players[i][n] += c;
-							played = true;
+					while (true) {
+						bool played = false;
+						auto c = p.PlayerHand.play();
+						for (std::size_t n = 0; n < p.getNumChains(); i++) {
+							if (typeid(p[n].cardType) == typeid(c)) {
+								p[n] += c;
+								played = true;
+							}
+						}
+						if (played = false) {
+							if (p.getNumChains() < p.getMaxNumChains()) {
+								addChain(p, c);
+							}
+							else {
+								cout << "Which chain will be sold? (1-" << p.getNumChains() << ")" << endl;
+								for (std::list<Chain<Card>>::iterator it = p.PlayerChains.begin(); it != p.PlayerChains.end(); ++it) {
+									cout << ' ' << *it << endl;
+								}
+								while (true) {
+									int ianswer;
+									cin >> ianswer;
+									if ((ianswer < p.getMaxNumChains()) && (ianswer > 0)) {
+										std::list<Chain<Card>>::iterator it = p.PlayerChains.begin();
+										advance(it, ianswer - 1);
+										p += it->sell();
+										it = p.PlayerChains.erase(it);
+									}
+								}
+								addChain(p, c);
+							}
+						}
+						cout << "Play next card? (Y or N)" << endl;
+						cin >> answer;
+						if (answer != "Y") {
+							break;
 						}
 					}
-					if (played = false) {
-						if (t.Players[i].getNumChains() < t.Players[i].getMaxNumChains()) 
-						{
-							Chain<Emerald> newChain;
-							if (typeid(c) == typeid(new Quartz))
-								Chain<Quartz> newChain;
-							else if (typeid(c) == typeid(new Hematite))
-								Chain<Hematite> newChain;
-							else if (typeid(c) == typeid(new Obsidian))
-								Chain<Obsidian> newChain;
-							else if (typeid(c) == typeid(new Malachite))
-								Chain<Malachite> newChain;
-							else if (typeid(c) == typeid(new Turquoise))
-								Chain<Turquoise> newChain;
-							else if (typeid(c) == typeid(new Ruby))
-								Chain<Ruby> newChain;
-							else if (typeid(c) == typeid(new Amethyst))
-								Chain<Amethyst> newChain;
-							t.Players[i].PlayerChains.emplace_back(newChain);
-						}
-						else {
-							cout << "Which chain will be sold? (1-" << t.Players[i].getNumChains() <<")" << endl;
-							for (std::list<Chain<Card>>::iterator it = t.Players[i].PlayerChains.begin(); it != t.Players[i].PlayerChains.end(); ++it) {
-								cout << ' ' << *it << endl;
-							}
-							cin >> answer;
-							while (true) {
-								int ianswer;
-								if ((ianswer < t.Players[i].getMaxNumChains()) && (ianswer > 0)) {
-									std::list<Chain<Card>>::iterator it = t.Players[i].PlayerChains.begin();
-									advance(it, ianswer-1);
-									it = t.Players[i].PlayerChains.erase(it);
-								}
+					cout << "Discard a card? (Y or N)" << endl;
+					cin >> answer;
+					if ((answer == "Y") && (!p.PlayerHand.PlayHand.empty())) {
+						p.printHand(cout, true);
+						while (true) {
+							int ianswer;
+							cout << "Choose a card number to discard (1-" << p.PlayerHand.PlayHand.size() << ")" << endl;
+							cin >> ianswer;
+							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)) {
+								
 							}
 						}
+					
 					}
 				}
 			}
@@ -120,4 +128,23 @@ int main(){
 	}
 
 	
+}
+
+void addChain(Player p, Card* c) {
+	Chain<Emerald> newChain;
+	if (typeid(c) == typeid(new Quartz))
+		Chain<Quartz> newChain;
+	else if (typeid(c) == typeid(new Hematite))
+		Chain<Hematite> newChain;
+	else if (typeid(c) == typeid(new Obsidian))
+		Chain<Obsidian> newChain;
+	else if (typeid(c) == typeid(new Malachite))
+		Chain<Malachite> newChain;
+	else if (typeid(c) == typeid(new Turquoise))
+		Chain<Turquoise> newChain;
+	else if (typeid(c) == typeid(new Ruby))
+		Chain<Ruby> newChain;
+	else if (typeid(c) == typeid(new Amethyst))
+		Chain<Amethyst> newChain;
+	p.PlayerChains.emplace_back(newChain);
 }

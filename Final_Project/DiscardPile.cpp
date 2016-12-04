@@ -13,6 +13,13 @@ DiscardPile & DiscardPile::operator+=(Card * c)
 	return *this;
 }
 
+DiscardPile::~DiscardPile()
+{
+	for (auto c : dp) {
+		delete c;
+	}
+}
+
 Card * DiscardPile::pickUp()
 {
 	auto drawn = dp.back();

@@ -16,8 +16,9 @@ TradeArea CLASS HEADER FILE
 using namespace std;
 
 class TradeArea{
-	list<Card*> area;
+	
 	public:
+		list<Card*> area;
 		TradeArea(istream& is, CardFactory* cf);
 		TradeArea& operator+=(Card* c);
 		bool legal(Card* c);

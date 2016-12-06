@@ -6,50 +6,6 @@ using std::endl;
 using std::string;
 #include"Table.h"
 
-void addChain(Player p, Card* c) {
-	Chain<class Card> newChain;
-	if (typeid(c) == typeid(new Quartz))
-		Chain<Quartz> newChain;
-	else if (typeid(c) == typeid(new Hematite))
-		Chain<Hematite> newChain;
-	else if (typeid(c) == typeid(new Obsidian))
-		Chain<Obsidian> newChain;
-	else if (typeid(c) == typeid(new Malachite))
-		Chain<Malachite> newChain;
-	else if (typeid(c) == typeid(new Turquoise))
-		Chain<Turquoise> newChain;
-	else if (typeid(c) == typeid(new Ruby))
-		Chain<Ruby> newChain;
-	else if (typeid(c) == typeid(new Amethyst))
-		Chain<Amethyst> newChain;
-	else
-		Chain<Emerald> newChain;
-	p.PlayerChains.emplace_back(newChain);
-}
-
-void addCardAndMakeChain(Player p, Card* c) {
-	if (p.getNumChains() < p.getMaxNumChains()) {
-		addChain(p, c);
-	}
-	else {
-		cout << "Which chain will be sold? (1-" << p.getNumChains() << ")" << endl;
-		for (std::list<Chain<Card>>::iterator it = p.PlayerChains.begin(); it != p.PlayerChains.end(); ++it) {
-			cout << ' ' << *it << endl;
-		}
-		while (true) {
-			int ianswer;
-			cin >> ianswer;
-			if ((ianswer < p.getMaxNumChains()) && (ianswer > 0)) {
-				std::list<Chain<Card>>::iterator it = p.PlayerChains.begin();
-				advance(it, ianswer - 1);
-				p += it->sell();
-				it = p.PlayerChains.erase(it);
-			}
-		}
-		addChain(p, c);
-	}
-}
-
 int main(){
 	string answer;
 	Table t;
@@ -124,7 +80,7 @@ int main(){
 							}
 						}
 						if (played = false) {
-							addCardAndMakeChain(p, c);
+							p.addCardAndMakeChain(c);
 						}
 						cout << "Play next card? (Y or N)" << endl;
 						cin >> answer;
@@ -173,7 +129,7 @@ int main(){
 								}
 							}
 							if (!added) {
-								addCardAndMakeChain(p, n);
+								p.addCardAndMakeChain(n);
 							}
 						}
 					}

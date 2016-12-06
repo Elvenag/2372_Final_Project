@@ -71,3 +71,47 @@ ostream& operator<<(ostream& os, const Player& p){
 	}
 	return os;
 }
+
+void Player::addChain(Card* c) {
+	Chain<class Card> newChain;
+	if (typeid(c) == typeid(new Quartz))
+		Chain<Quartz> newChain;
+	else if (typeid(c) == typeid(new Hematite))
+		Chain<Hematite> newChain;
+	else if (typeid(c) == typeid(new Obsidian))
+		Chain<Obsidian> newChain;
+	else if (typeid(c) == typeid(new Malachite))
+		Chain<Malachite> newChain;
+	else if (typeid(c) == typeid(new Turquoise))
+		Chain<Turquoise> newChain;
+	else if (typeid(c) == typeid(new Ruby))
+		Chain<Ruby> newChain;
+	else if (typeid(c) == typeid(new Amethyst))
+		Chain<Amethyst> newChain;
+	else
+		Chain<Emerald> newChain;
+	PlayerChains.emplace_back(newChain);
+}
+
+void Player::addCardAndMakeChain(Card* c) {
+	if (getNumChains() < getMaxNumChains()) {
+		addChain(c);
+	}
+	else {
+		cout << "Which chain will be sold? (1-" << getNumChains() << ")" << endl;
+		for (std::list<Chain<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end(); ++it) {
+			cout << ' ' << *it << endl;
+		}
+		while (true) {
+			int ianswer;
+			cin >> ianswer;
+			if ((ianswer < getMaxNumChains()) && (ianswer > 0)) {
+				std::list<Chain<Card>>::iterator it = PlayerChains.begin();
+				advance(it, ianswer - 1);
+				*this += it->sell();
+				it = PlayerChains.erase(it);
+			}
+		}
+		addChain(c);
+	}
+}

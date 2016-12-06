@@ -37,6 +37,8 @@ class Player{
 		void buyThirdChain();
 		void printHand(ostream& os, bool b);
 		friend ostream& operator<<(ostream& os, const Player& p);
+		void addChain(Card* c);
+		void addCardAndMakeChain(Card* c);
 };
 
 #endif

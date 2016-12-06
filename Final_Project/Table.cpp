@@ -9,7 +9,6 @@ Table CLASS CPP FILE
 #include <string>
 using namespace std;
 
-
 bool Table::win(std::string& s){
 	if(Library.empty()){
 		if(Players[0].getNumCoins() > Players[1].getNumCoins()){

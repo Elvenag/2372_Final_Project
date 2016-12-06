@@ -7,7 +7,7 @@ using std::string;
 #include"Table.h"
 
 void addChain(Player p, Card* c) {
-	Chain<Emerald> newChain;
+	Chain<class Card> newChain;
 	if (typeid(c) == typeid(new Quartz))
 		Chain<Quartz> newChain;
 	else if (typeid(c) == typeid(new Hematite))
@@ -22,6 +22,8 @@ void addChain(Player p, Card* c) {
 		Chain<Ruby> newChain;
 	else if (typeid(c) == typeid(new Amethyst))
 		Chain<Amethyst> newChain;
+	else
+		Chain<Emerald> newChain;
 	p.PlayerChains.emplace_back(newChain);
 }
 

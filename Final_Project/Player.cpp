@@ -41,7 +41,7 @@ int Player::getNumChains(){
 	return cntr;
 }
 
-Chain<Card>& Player::operator[](int i){
+Chain_Base<Card>& Player::operator[](int i){
 	list<Chain<Card>>::iterator it;
 	advance(it, i);
 	return *it;

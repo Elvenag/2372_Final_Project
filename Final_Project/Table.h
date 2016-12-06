@@ -17,7 +17,7 @@ using namespace std;
 class Table{
 	public:
 		Table() = default;
-		~Table();
+		~Table() = default;
 		Player Players[2];
 		Deck Library;
 		DiscardPile Grave;

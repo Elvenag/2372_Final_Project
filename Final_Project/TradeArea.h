@@ -18,6 +18,7 @@ using namespace std;
 class TradeArea{
 	
 	public:
+		TradeArea() = default;
 		list<Card*> area;
 		TradeArea(istream& is, CardFactory* cf);
 		TradeArea& operator+=(Card* c);

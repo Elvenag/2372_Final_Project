@@ -16,6 +16,7 @@ using std::vector;
 class DiscardPile {
 	vector<Card*> dp;
 public:
+	DiscardPile() = default;
 	DiscardPile& operator +=(Card* c);
 	~DiscardPile();
 	Card* pickUp();

@@ -15,11 +15,12 @@ using std::vector;
 
 template<class T> class Chain_Base: public vector<T*>{	
 public:
-	T cardType;
-	Chain_Base() : vector(int, T) {};
+	T* cardType;
+	using std::vector<T*>::vector;
 	Chain_Base<T>& operator+=(Card* c);
 	friend ostream& operator<<(ostream& os,const Chain_Base<Card>& c);
 	int sell();
+	~Chain_Base() = default;
 };
 
 template<class Card> class Chain : public Chain_Base<Card> {};
@@ -28,7 +29,7 @@ template<> class Chain<Ruby> : public Chain_Base<Ruby> {
 public:
 	Ruby cardType;
 	Chain() : Chain_Base() {};
-	Chain(istream& is, CardFactory* cf);	
+	Chain(istream& is, CardFactory* cf);
 };
 
 template<> class Chain<Quartz> : public Chain_Base<Quartz> {
@@ -101,7 +102,7 @@ inline int Chain_Base<Card>::sell()
 	int cards = 0;
 	int result = 0;
 	for (int i = 0; i <= 4; i++) {
-		cards = cardType.getCardsPerCoin(i);
+		cards = cardType->getCardsPerCoin(i);
 		if (cards > this->size()) {
 			break;
 		}
@@ -130,7 +131,7 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 
 
 //template<class Card*>
-inline ostream& operator<<(ostream & os,const Chain_Base<Card*>& c)
+inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 {
 	os << c.cardType->getName();
 	for (std::size_t i = 0; i < c.size(); i++) {

@@ -97,6 +97,7 @@ void Player::addChain(Card* c) {
 		Chain<Amethyst> newChain;
 	else
 		Chain<Emerald> newChain;
+	newChain.push_back(c);
 	PlayerChains.emplace_back(newChain);
 }
 

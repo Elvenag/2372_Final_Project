@@ -77,19 +77,14 @@ int main(){
 						bool played = false;
 						auto c = p.PlayerHand.play();
 						for (std::size_t n = 0; n < p.getNumChains(); n++) {
-							if (typeid(p[n].cardType) == typeid(c)) {
+							if ((p[n].cardType->getName()) == (c->getName())) {
 								p[n] += c;
 								played = true;
 							}
 						}
 						if (played == false) {
 							p.addCardAndMakeChain(c);
-							for (std::size_t n = 0; n < p.getNumChains(); n++) {
-								if (typeid(p[n].cardType) == typeid(c)) {
-									p[n] += c;
-									played = true;
-								}
-							}
+							
 						}
 						p.printHand(cout, true);
 						cout << endl;

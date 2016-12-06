@@ -27,14 +27,14 @@ template<class Card> class Chain : public Chain_Base<Card> {};
 
 template<> class Chain<Ruby> : public Chain_Base<Ruby> {
 public:
-	Ruby cardType;
+	Ruby* cardType;
 	Chain() : Chain_Base() {};
 	Chain(istream& is, CardFactory* cf);
 };
 
 template<> class Chain<Quartz> : public Chain_Base<Quartz> {
 public:
-	Quartz cardType;
+	Quartz* cardType;
 	Chain() : Chain_Base() {};
 	Chain(istream& is, CardFactory* cf);
 	
@@ -42,7 +42,7 @@ public:
 
 template<> class Chain<Hematite> : public Chain_Base<Hematite> {
 public:
-	Hematite cardType;
+	Hematite* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -51,7 +51,7 @@ public:
 
 template<> class Chain<Obsidian> : public Chain_Base<Obsidian> {
 public:
-	Obsidian cardType;
+	Obsidian* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -60,7 +60,7 @@ public:
 
 template<> class Chain < Malachite > : public Chain_Base<Malachite> {
 public:
-	Malachite cardType;
+	Malachite* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -69,7 +69,7 @@ public:
 
 template<> class Chain<Turquoise> : public Chain_Base<Turquoise> {
 public:
-	Turquoise cardType;
+	Turquoise* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -78,7 +78,7 @@ public:
 
 template<> class Chain<Amethyst> : public Chain_Base<Amethyst> {
 public:
-	Amethyst cardType;
+	Amethyst* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -87,7 +87,7 @@ public:
 
 template<> class Chain<Emerald> : public Chain_Base<Emerald> {
 public:
-	Emerald cardType;
+	Emerald* cardType;
 	Chain() : Chain_Base() {};
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
@@ -117,7 +117,7 @@ template<class T>
 inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 {
 	try {
-		if (typeid(c) == typeid(T))
+		if (c->getName() == cardType->getName())
 			this->push_back(c);
 		else {
 			throw IllegalType("Card type does not match Chain type.");

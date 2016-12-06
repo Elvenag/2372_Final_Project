@@ -81,23 +81,41 @@ void Player::addChain(Card* c) {
 	Turquoise t;
 	Ruby r;
 	Amethyst a;
-	if (c->getName() == q.getName())
+	Card * cardType;
+	if (c->getName() == q.getName()) {
 		Chain<Quartz> newChain;
-	else if (c->getName() == h.getName())
+		cardType = &q;
+	}
+	else if (c->getName() == h.getName()) {
 		Chain<Hematite> newChain;
-	else if (c->getName() == o.getName())
+		cardType = &h;
+	}
+	else if (c->getName() == o.getName()) {
 		Chain<Obsidian> newChain;
-	else if (c->getName() == m.getName())
+		cardType = &o;
+	}
+	else if (c->getName() == m.getName()) {
 		Chain<Malachite> newChain;
-	else if (c->getName() == t.getName())
+		cardType = &m;
+	}
+	else if (c->getName() == t.getName()) {
 		Chain<Turquoise> newChain;
-	else if (c->getName() == r.getName())
+		cardType = &t;
+	}
+	else if (c->getName() == r.getName()) {
 		Chain<Ruby> newChain;
-	else if (c->getName() == a.getName())
+		cardType = &r;
+	}
+	else if (c->getName() == a.getName()) {
 		Chain<Amethyst> newChain;
-	else
+		cardType = &a;
+	}
+	else {
 		Chain<Emerald> newChain;
-		newChain+=c;
+		cardType = new Emerald;
+	}
+	newChain.cardType = cardType;
+	newChain+=c;
 	PlayerChains.emplace_back(newChain);
 }
 

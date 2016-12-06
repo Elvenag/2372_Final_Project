@@ -29,7 +29,7 @@ Card * DiscardPile::pickUp()
 
 Card * DiscardPile::top() const
 {
-	auto top = dp.back();
+	Card* top = dp.back();
 	return top;
 }
 

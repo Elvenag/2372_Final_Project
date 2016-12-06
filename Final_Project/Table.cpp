@@ -13,14 +13,19 @@ bool Table::win(std::string& s){
 	if(Library.empty()){
 		if(Players[0].getNumCoins() > Players[1].getNumCoins()){
 			s = Players[0].getName();
+			cout << "The winner is : " << s << endl;
 			return true;
 		}else if(Players[0].getNumCoins() < Players[1].getNumCoins()){
 			s = Players[1].getName();
+			cout << "The winner is : " << s << endl;
 			return true;
 		}else{
 			s = Players[0].getName() +" and "+ Players[1].getName();
+			cout << "The winner is : " << s << endl;
+			return false;
 		}
 	}
+	exit(0);
 }
 
 

@@ -29,8 +29,18 @@ int main(){
 			CardFactory cf;
 			t.Library = cf.getDeck();
 			for (int i = 1; i <= 5; i++) {
-				t.Players[0].PlayerHand += t.Library.draw();
-				t.Players[1].PlayerHand += t.Library.draw();
+				if(t.Library.size()>0){
+					t.Players[0].PlayerHand += t.Library.draw();
+				}else{
+					string winner;
+					t.win(winner);
+				}
+				if(t.Library.size()>0){
+					t.Players[1].PlayerHand += t.Library.draw();
+				}else{
+					string winner;
+					t.win(winner);
+				}
 			}
 		}
 		while (t.Library.size() > 0) {
@@ -61,11 +71,11 @@ int main(){
 					p.printHand(cout, true);
 					cout << endl;
 					if (t.GTS.numCards() != 0) {
-						cout << t.GTS;
 						while (true) {
+							cout << t.GTS << endl;
 							cout << "Insert name of card you wish to trade for or done" << endl;
 							cin >> answer;
-							if (answer == "done") {
+							if (answer == "done" || (t.GTS.numCards() != 0)) {
 								break;
 							}
 							else {
@@ -74,7 +84,11 @@ int main(){
 						}
 					}
 					while (true) {
-						bool played = false;
+						if(p.PlayerHand.PlayHand.size() == 0){
+							cout<< "No play : No more Cards in Hand" << endl;
+							break;
+						}
+						/*bool played = false;
 						auto c = p.PlayerHand.play();
 						for (std::size_t n = 0; n < p.getNumChains(); n++) {
 							if ((p[n].cardType->getName()) == (c->getName())) {
@@ -85,7 +99,7 @@ int main(){
 						if (played == false) {
 							p.addCardAndMakeChain(c);
 							
-						}
+						}*/
 						cout << p.getName() << "'s hand: " << endl;
 						p.printHand(cout, true);
 						cout << endl;
@@ -95,40 +109,56 @@ int main(){
 							break;
 						}
 					}
+					while (true) {
+					cout << p.getName() << "'s hand: ";
+					p.printHand(cout, true);
+					cout<< endl;
 					cout << "Discard a card? (Y or N)" << endl;
 					cin >> answer;
 					if ((answer == "Y") && (!p.PlayerHand.PlayHand.empty())) {
-						p.printHand(cout, true);
-						while (true) {
+							Card* discarded;
+							cout << endl;
 							int ianswer;
 							cout << "Choose a card number to discard (1-" << p.PlayerHand.PlayHand.size() << ")" << endl;
 							cin >> ianswer;
-							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)) {
-								Hand temp;
-								for (int n = 0; n < p.PlayerHand.PlayHand.size(); n++) {
-									if (n = ianswer - 1) {
-										p.PlayerHand.PlayHand.pop();
-									}
-									else {
-										temp += p.PlayerHand.play();
-									}
-								}
-								p.PlayerHand = temp;
+							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)&&(ianswer <= p.PlayerHand.PlayHand.size())) {
+								discarded = p.PlayerHand[ianswer-1];
 							}
+							cout<< "elem discaded " << discarded->getName() << endl;
+							t.Grave += discarded;
+						}else{
+							break;
 						}
+
 					}
-					t.GTS += t.Library.draw();
-					t.GTS += t.Library.draw();
-					t.GTS += t.Library.draw();
-					while (t.GTS.legal(t.Grave.top())) {
+					if(t.Library.size() > 0){
+						t.GTS += t.Library.draw();
+					}else{
+						string winner;
+						t.win(winner);
+					}
+					if(t.Library.size() > 0){
+						t.GTS += t.Library.draw();
+					}else{
+						string winner;
+						t.win(winner);
+					}if(t.Library.size() > 0){
+						t.GTS += t.Library.draw();
+					}else{
+						string winner;
+						t.win(winner);
+					}
+					while ((t.Grave.dp.size() > 0) && (t.GTS.legal(t.Grave.top()))) {
 						t.GTS += t.Grave.pickUp();
 					}
+					
 					for (auto& n : t.GTS.area) {
-						cout << "Trade for this card: " << n << "? (Y or N)" << endl;
+						cout << t.GTS << endl;
+						cout << "Trade for this card: " << n->getName() << "? (Y or N)" << endl;
 						cin >> answer;
 						if (answer == "Y") {
-							t.GTS.trade(n->getName());
-							bool added = false;
+							cout << t.GTS.trade(n->getName())->getName() << endl;
+							/*bool added = false;
 							for (std::size_t j = 0; j < p.getNumChains(); j++) {
 								if (typeid(p[j].cardType) == typeid(n)) {
 									bool added = true;
@@ -137,17 +167,31 @@ int main(){
 							}
 							if (!added) {
 								p.addCardAndMakeChain(n);
-							}
+							}*/
 						}
 					}
-					p.PlayerHand += t.Library.draw();
-					p.PlayerHand += t.Library.draw();
+					if(t.Library.size() > 0){
+						p.PlayerHand += t.Library.draw();
+					}else{
+						string winner;
+						t.win(winner);
+					}
+					if(t.Library.size() > 0){
+						p.PlayerHand += t.Library.draw();
+					}else{
+						string winner;
+						t.win(winner);
+					}
 				}
 			}
 
 		}
+		
+		string winner;
+		t.win(winner);
+		break;
 	}
 	
-	
+
 }
 

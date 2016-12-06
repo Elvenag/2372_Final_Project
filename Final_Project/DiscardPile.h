@@ -14,8 +14,8 @@ DiscardPile CLASS HEADER FILE
 using std::vector;
 
 class DiscardPile {
-	vector<Card*> dp;
 public:
+	vector<Card*> dp;
 	DiscardPile() = default;
 	DiscardPile& operator +=(Card* c);
 	~DiscardPile();

@@ -40,6 +40,10 @@ void DiscardPile::print(std::ostream & os)
 }
 
 ostream& operator<<(ostream& os,const DiscardPile& Grave){
+	if (Grave.dp.empty()) {
+		os << "Empty discard pile";
+		return os;
+	}
 	os << Grave.top();
 	return os;
 }

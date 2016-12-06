@@ -14,7 +14,7 @@ class CardFactory {
 public:
 	Deck gameDeck;
 	CardFactory();
-	~CardFactory();
+	//~CardFactory();
 	Deck getDeck();
 	static CardFactory* getFactory();
 };

@@ -7,6 +7,7 @@ using std::string;
 #include"Table.h"
 
 int main(){
+
 	string answer;
 	Table t;
 	while (true) {
@@ -31,7 +32,6 @@ int main(){
 				t.Players[0].PlayerHand += t.Library.draw();
 				t.Players[1].PlayerHand += t.Library.draw();
 			}
-			break;
 		}
 		while (t.Library.size() > 0) {
 			cout << "Type p to pause, anything else to continue." << endl;
@@ -57,6 +57,9 @@ int main(){
 						}
 					}
 					p.PlayerHand += t.Library.draw();
+					cout << p.getName() << "'s hand: " << endl;
+					p.printHand(cout, true);
+					cout << endl;
 					if (t.GTS.numCards() != 0) {
 						cout << t.GTS;
 						while (true) {
@@ -79,9 +82,17 @@ int main(){
 								played = true;
 							}
 						}
-						if (played = false) {
+						if (played == false) {
 							p.addCardAndMakeChain(c);
+							for (std::size_t n = 0; n < p.getNumChains(); n++) {
+								if (typeid(p[n].cardType) == typeid(c)) {
+									p[n] += c;
+									played = true;
+								}
+							}
 						}
+						p.printHand(cout, true);
+						cout << endl;
 						cout << "Play next card? (Y or N)" << endl;
 						cin >> answer;
 						if (answer != "Y") {
@@ -140,7 +151,7 @@ int main(){
 
 		}
 	}
-
+	
 	
 }
 

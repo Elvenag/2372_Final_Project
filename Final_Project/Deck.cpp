@@ -8,11 +8,14 @@ Deck CLASS CPP FILE
 #include "Deck.h"
 #include "CardFactory.h"
 
-Deck::~Deck()
+/*Deck::~Deck()
 {
-	for (std::size_t i = 0; i < size(); i++)
-		delete at(i);
-}
+	Card * c;
+	for (vector<Card *>::iterator it = begin(); it != end(); ++it) {
+		c = *it;
+		delete c;
+	}
+}*/
 
 Card * Deck::draw()
 {

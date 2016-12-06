@@ -10,8 +10,8 @@ Player CLASS CPP FILE
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-	PlayerChains.push_back(Chain<Card>());
-	PlayerChains.push_back(Chain<Card>());
+//	PlayerChains.push_back(Chain<Card>());
+//	PlayerChains.push_back(Chain<Card>());
 };
 
 string Player::getName(){
@@ -74,19 +74,26 @@ ostream& operator<<(ostream& os, const Player& p){
 
 void Player::addChain(Card* c) {
 	Chain<class Card> newChain;
-	if (typeid(c) == typeid(new Quartz))
+	Quartz q;
+	Hematite h;
+	Obsidian o;
+	Malachite m;
+	Turquoise t;
+	Ruby r;
+	Amethyst a;
+	if (c->getName() == q.getName())
 		Chain<Quartz> newChain;
-	else if (typeid(c) == typeid(new Hematite))
+	else if (c->getName() == h.getName())
 		Chain<Hematite> newChain;
-	else if (typeid(c) == typeid(new Obsidian))
+	else if (c->getName() == o.getName())
 		Chain<Obsidian> newChain;
-	else if (typeid(c) == typeid(new Malachite))
+	else if (c->getName() == m.getName())
 		Chain<Malachite> newChain;
-	else if (typeid(c) == typeid(new Turquoise))
+	else if (c->getName() == t.getName())
 		Chain<Turquoise> newChain;
-	else if (typeid(c) == typeid(new Ruby))
+	else if (c->getName() == r.getName())
 		Chain<Ruby> newChain;
-	else if (typeid(c) == typeid(new Amethyst))
+	else if (c->getName() == a.getName())
 		Chain<Amethyst> newChain;
 	else
 		Chain<Emerald> newChain;

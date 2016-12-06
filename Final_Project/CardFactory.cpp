@@ -48,11 +48,10 @@ CardFactory::CardFactory()
 	cf = this;
 }
 
-CardFactory::~CardFactory()
-{
-	for (std::size_t i = 0; i < gameDeck.size(); i++)
-		delete gameDeck[i];
-}
+//CardFactory::~CardFactory()
+//{
+//	delete[] gameDeck;
+//}
 
 CardFactory * CardFactory::getFactory()
 {

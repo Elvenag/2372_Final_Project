@@ -86,6 +86,7 @@ int main(){
 							p.addCardAndMakeChain(c);
 							
 						}
+						cout << p.getName() << "'s hand: " << endl;
 						p.printHand(cout, true);
 						cout << endl;
 						cout << "Play next card? (Y or N)" << endl;

@@ -20,7 +20,7 @@ Deck CLASS CPP FILE
 Card * Deck::draw()
 {
 	auto drawn = front();
-	erase(++(begin()));
+	erase(begin());
 	return drawn;
 }
 

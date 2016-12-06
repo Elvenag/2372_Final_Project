@@ -47,7 +47,7 @@ ostream& operator<<(ostream &os,const Hand& h){
 	queue <Card*> temphand;
 	temphand = h.PlayHand;
     for(int i = 0; i < h.PlayHand.size();i++){
-    	os << temphand.front() << " ";
+    	os << temphand.front()->getName() << " ";
     	temphand.pop();
     }
     return os;

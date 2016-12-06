@@ -133,6 +133,10 @@ inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 //template<class Card*>
 inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 {
+	if (c.size() == 0) {
+		os << "";
+		return os;
+	}
 	os << c.cardType->getName();
 	for (std::size_t i = 0; i < c.size(); i++) {
 		os << " ";
@@ -140,58 +144,3 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 	}
 	return os;
 }
-
-/*
-inline int Chain<Ruby>::sell()
-{
-	int cards = 0;
-	int result = 0;
-	for (int i = 0; i <= 4; i++) {
-		cards = cardType.getCardsPerCoin(i);
-		if (cards > size()) {
-			break;
-		}
-		else {
-			result = cards;
-		}
-	}
-	return result;
-}
-
-
-inline int Chain<Quartz>::sell() 
-{
-	return 0;
-}
-
-inline int Chain<Hematite>::sell()
-{
-	return 0;
-}
-
-inline int Chain<Obsidian>::sell()
-{
-	return 0;
-}
-
-inline int Chain<Malachite>::sell()
-{
-	return 0;
-}
-
-inline int Chain<Turquoise>::sell()
-{
-	return 0;
-}
-
-inline int Chain<Amethyst>::sell()
-{
-	return 0;
-}
-
-inline int Chain <Emerald> ::sell()
-{
-	
-	return 0;
-}
-*/

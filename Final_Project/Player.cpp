@@ -42,7 +42,7 @@ int Player::getNumChains(){
 }
 
 Chain_Base<Card>& Player::operator[](int i){
-	list<Chain<Card>>::iterator it;
+	list<Chain<Card>>::iterator it= PlayerChains.begin();;
 	advance(it, i);
 	return *it;
 }
@@ -64,7 +64,7 @@ void Player::printHand(ostream& os, bool b){
 }
 
 ostream& operator<<(ostream& os, const Player& p){
-	os << p.PlayerName << p.coins << " coins" << endl;
+	os << p.PlayerName << " " << p.coins << " coins" << endl;
 	list<Chain<Card>>::const_iterator it;
 	for(it=p.PlayerChains.begin(); it!=p.PlayerChains.end(); it++){
 		os << *it;
@@ -97,7 +97,7 @@ void Player::addChain(Card* c) {
 		Chain<Amethyst> newChain;
 	else
 		Chain<Emerald> newChain;
-	newChain.push_back(c);
+		newChain+=c;
 	PlayerChains.emplace_back(newChain);
 }
 

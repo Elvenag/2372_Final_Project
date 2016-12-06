@@ -9,7 +9,7 @@ Hand CLASS HEADER FILE
 #define Hand_H
 #include <string>
 #include <iostream>
-#include <queue>
+#include <deque>
 #include "Gemstones.h"
 #include "CardFactory.h"
 
@@ -17,7 +17,7 @@ using namespace std;
 
 class Hand{
 	public:
-		queue <Card*> PlayHand;	
+		deque <Card*> PlayHand;	
 		Hand(istream& is, CardFactory* cf);
 		Hand() = default;
 		Hand& operator+=(Card* c);

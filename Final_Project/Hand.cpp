@@ -7,13 +7,13 @@ Hand CLASS CPP FILE
 #include "Hand.h"
 #include <iostream>
 #include <string>
-#include <queue>
+#include <deque>
 
 using namespace std;
 
 Card* Hand::play(){
 	Card* c = PlayHand.front();
-	PlayHand.pop();
+	PlayHand.pop_front();
 	return c;
 }
 
@@ -22,39 +22,25 @@ Card* Hand::top(){
 }
 
 Hand& Hand::operator+=(Card* c){
-	PlayHand.push(c);
+	PlayHand.push_back(c);
 	return *this;
 }
 
 Card* Hand::operator[](int i){
-	queue <Card*> temphand;
-	Card* elem;
-	for(int j = 0 ; j < i ; j++){
-		temphand.push(PlayHand.front());
-		PlayHand.pop();
-	}
-	elem = PlayHand.front();
-	PlayHand.pop();
-	for(int j = 0; j < PlayHand.size() ; j++){
-		temphand.push(PlayHand.front());
-		PlayHand.pop();
-	}
-	PlayHand = temphand;
+	Card* elem = PlayHand.at(i);
+	PlayHand.erase(PlayHand.begin()+(i));
 	return elem;
 }
 
 ostream& operator<<(ostream &os,const Hand& h){
-	queue <Card*> temphand;
-	temphand = h.PlayHand;
     for(int i = 0; i < h.PlayHand.size();i++){
-    	os << temphand.front()->getName() << " ";
-    	temphand.pop();
+    	os << h.PlayHand.at(i)->getName() << " ";
     }
     return os;
 }
 
 Hand::~Hand(){
 	while(!PlayHand.empty()){
-		PlayHand.pop();
+		PlayHand.pop_front();
 	}
 }

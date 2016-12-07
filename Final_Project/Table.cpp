@@ -30,8 +30,8 @@ bool Table::win(std::string& s){
 
 
 void Table::print(ostream& os){
-	for(auto i : Players){
-		os << i << endl;
+	for(int i = 0; i < 2; i++){
+		os << Players[i] << endl;
 	}
 	os << Library << endl;
 	os << Grave << endl;

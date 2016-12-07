@@ -7,7 +7,6 @@ using std::string;
 #include"Table.h"
 
 int main(){
-
 	string answer;
 	Table t;
 	while (true) {
@@ -88,18 +87,20 @@ int main(){
 							cout<< "No play : No more Cards in Hand" << endl;
 							break;
 						}
-						/*bool played = false;
-						auto c = p.PlayerHand.play();
-						for (std::size_t n = 0; n < p.getNumChains(); n++) {
+						bool played = false;
+						Card* c = p.PlayerHand.play();
+						/*for (std::size_t n = 0; n < p.getNumChains(); n++) {
 							if ((p[n].cardType->getName()) == (c->getName())) {
 								p[n] += c;
 								played = true;
 							}
-						}
+						}*/
 						if (played == false) {
 							p.addCardAndMakeChain(c);
 							
-						}*/
+						}
+						cout << "numchains: "<< p.getNumChains() << endl;
+						cout << p << endl;
 						cout << p.getName() << "'s hand: " << endl;
 						p.printHand(cout, true);
 						cout << endl;
@@ -116,6 +117,7 @@ int main(){
 					cout << "Discard a card? (Y or N)" << endl;
 					cin >> answer;
 					if ((answer == "Y") && (!p.PlayerHand.PlayHand.empty())) {
+						if(!p.PlayerHand.PlayHand.empty()){
 							Card* discarded;
 							cout << endl;
 							int ianswer;
@@ -127,8 +129,12 @@ int main(){
 							cout<< "elem discaded " << discarded->getName() << endl;
 							t.Grave += discarded;
 						}else{
+							cout << "No Cards in hand" << endl;
 							break;
 						}
+					}else{
+						break;
+					}
 
 					}
 					if(t.Library.size() > 0){

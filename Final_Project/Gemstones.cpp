@@ -40,7 +40,7 @@ string Quartz::getName() const{
 }
 
 void Quartz::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Hematite
@@ -68,7 +68,7 @@ string Hematite::getName() const{
 }
 
 void Hematite::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Obsidian
@@ -96,7 +96,7 @@ string Obsidian::getName() const{
 }
 
 void Obsidian::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Malachite
@@ -124,7 +124,7 @@ string Malachite::getName() const{
 }
 
 void Malachite::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Turquoise
@@ -152,7 +152,7 @@ string Turquoise::getName() const{
 }
 
 void Turquoise::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Ruby
@@ -180,7 +180,7 @@ string Ruby::getName() const{
 }
 
 void Ruby::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Amethyst
@@ -208,7 +208,7 @@ string Amethyst::getName() const{
 }
 
 void Amethyst::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }
 
 //Emerald
@@ -230,5 +230,5 @@ string Emerald::getName() const{
 }
 
 void Emerald::print(ostream& out){
-	out << this;
+	out << this->getName().front();
 }

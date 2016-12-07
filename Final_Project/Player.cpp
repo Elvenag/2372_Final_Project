@@ -32,19 +32,11 @@ Player& Player::operator+=(int num){
 }
 
 int Player::getNumChains(){
-	int cntr = 0;
-	for(list<Chain<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end() ; it++){
-		if(!it->empty()){
-			cntr++;
-		}
-	}
-	return cntr;
+	return PlayerChains.size();
 }
 
 Chain_Base<Card>& Player::operator[](int i){
-	list<Chain<Card>>::iterator it= PlayerChains.begin();;
-	advance(it, i);
-	return *it;
+	return PlayerChains[i];
 }
 
 void Player::buyThirdChain(){
@@ -63,11 +55,16 @@ void Player::printHand(ostream& os, bool b){
 	}
 }
 
-ostream& operator<<(ostream& os, const Player& p){
+ostream& operator<<(ostream& os,const Player& p){
 	os << p.PlayerName << " " << p.coins << " coins" << endl;
-	list<Chain<Card>>::const_iterator it;
+	/*list<Chain<Card>>::const_iterator it=p.PlayerChains.begin();
 	for(it=p.PlayerChains.begin(); it!=p.PlayerChains.end(); it++){
-		os << *it;
+		Chain<class Card> elem = *it;
+		os << typeid(elem).name() <<endl;
+	}*/
+	for(int i = 0; i < p.PlayerChains.size(); i++){
+		Card* c = p.PlayerChains[i].cardType;
+		os << p.PlayerChains.at(i) << endl;
 	}
 	return os;
 }
@@ -116,14 +113,14 @@ void Player::addChain(Card* c) {
 	}
 	newChain.cardType = cardType;
 	newChain+=c;
-	PlayerChains.emplace_back(newChain);
+	PlayerChains.push_back(newChain);
 }
 
 void Player::addCardAndMakeChain(Card* c) {
 	if (getNumChains() < getMaxNumChains()) {
 		addChain(c);
 	}
-	else {
+	/*else {
 		cout << "Which chain will be sold? (1-" << getNumChains() << ")" << endl;
 		for (std::list<Chain<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end(); ++it) {
 			cout << ' ' << *it << endl;
@@ -133,11 +130,14 @@ void Player::addCardAndMakeChain(Card* c) {
 			cin >> ianswer;
 			if ((ianswer < getMaxNumChains()) && (ianswer > 0)) {
 				std::list<Chain<Card>>::iterator it = PlayerChains.begin();
-				advance(it, ianswer - 1);
+				advance(it, ianswer);
 				*this += it->sell();
 				it = PlayerChains.erase(it);
+				break;
+			}else{
+				break;
 			}
 		}
 		addChain(c);
-	}
+	}*/
 }

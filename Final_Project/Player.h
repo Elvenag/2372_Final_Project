@@ -19,11 +19,9 @@ using namespace std;
 class Player{
 	string PlayerName;
 	int coins;
-	int MaxNumChains;
-	
-	
+	int MaxNumChains;	
 	public:
-		list<Chain<Card>> PlayerChains;
+		vector<Chain<Card>> PlayerChains;
 		Hand PlayerHand;
 		Player() = default;
 		Player(string& s);

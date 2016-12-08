@@ -17,24 +17,69 @@ Player::Player(istream & is, CardFactory * cf)
 {
 	string s;
 	getline(is,s);
-	cout << "HERE :" << s << endl;
-	/*size_t pos = s.find(" ");
-	this->PlayerName = s.substr(0, pos);
-	pos = s.find(" ", pos+1);
-	stringstream ss;
-	size_t pos2 = s.find(" ", pos + 1);
-	ss << s.substr(pos + 1, pos2);
-	ss>>this->coins;
-	pos = s.find(" ", pos2 + 1);
-	ss << s.substr(pos2 + 1, pos);
-	ss >> this->MaxNumChains;
-	pos2 = s.find(" ", pos + 1);
-	ss << s.substr(pos2 + 1);
-	int numChains = 0;
-	ss >> numChains;
-	for (int i = 0; i < numChains; i++) {
-		
-	}*/
+	stringstream converter;
+	
+	size_t pos = s.find(" ");
+	converter << s.substr(0, pos);
+	converter >> this->MaxNumChains;
+
+	stringstream converter2;	
+cout << "HERE :" << this->MaxNumChains << endl;
+	size_t pos2 = s.find(" ", pos+1);
+	converter2 << s.substr(pos, pos2);
+	int currentnumchains; 
+	converter2 >> currentnumchains;
+
+cout << "HERE :" << currentnumchains << endl;
+	pos = s.find(" ", pos2+1);
+	this->PlayerName = s.substr(pos2+1, pos-pos2-1);
+cout << "HERE :" << this->PlayerName << endl;
+	stringstream converter3;
+	pos2 = s.find(" ",pos+1);
+	converter3 << s.substr(pos,pos2-pos);
+	converter3 >> this->coins;
+cout << "HERE :" << coins << endl;
+	
+	for(int i = 0; i < currentnumchains;i++){
+		getline(is,s);
+		if(s.front() == 'Q'){
+			istringstream chaining(s);;
+			this->PlayerChains.push_back(Chain<Quartz>(chaining,cf));
+		}else if(s.front() == 'H'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Hematite>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		} else if(s.front() == 'O'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Obsidian>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}else if(s.front() == 'Malachite'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Malachite>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}else if(s.front() == 'Turquoise'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Turquoise>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}else if(s.front() == 'R'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Ruby>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}else if(s.front() == 'A'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Amethyst>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}else if(s.front() == 'E'){
+			istringstream chaining(s);
+			Chain<class Card> c = Chain<Emerald>(chaining,cf);
+			this->PlayerChains.push_back(c);
+		}
+	}
+	
+	while(getline(is,s)){
+		istringstream handing(s);
+		this->PlayerHand = Hand(handing,cf);
+	}
 }
 
 string Player::getName(){

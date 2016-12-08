@@ -26,5 +26,6 @@ class Hand{
 		Card* operator[](int i);
 		~Hand();
 		friend ostream& operator<<(ostream& os, const Hand& h);
+		string printHand();
 };
 #endif

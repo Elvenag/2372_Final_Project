@@ -40,6 +40,17 @@ ostream& operator<<(ostream &os,const Hand& h){
     return os;
 }
 
+string Hand::printHand(){
+	string h;
+    for(int i = 0; i < PlayHand.size();i++){
+    	h+= PlayHand.at(i)->getName();
+    	if(i <PlayHand.size()-1){
+    		h.push_back('\n');
+    	}
+    }
+    return h;
+}
+
 Hand::~Hand(){
 	while(!PlayHand.empty()){
 		PlayHand.pop_front();
@@ -48,29 +59,29 @@ Hand::~Hand(){
 
 Hand::Hand(istream& is, CardFactory* cf){
 	string s;
-	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
+	getline(is, s);
+	if(s.front() == 'Q') {
 		this->PlayHand.push_back(new Quartz);
 	}
-	for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'H'); i++) {
+	else if(s.front() == 'H') {
 		this->PlayHand.push_back(new Hematite);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {
+	else if(s.front() == 'O') {
 		this->PlayHand.push_back(new Obsidian);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
+	else if(s.front() == 'M') {
 		this->PlayHand.push_back(new Malachite);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'T'); i++) {
+	else if(s.front() == 'T') {
 		this->PlayHand.push_back(new Turquoise);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	else if(s.front() == 'R') {
 		this->PlayHand.push_back(new Ruby);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'A'); i++) {
+	else if(s.front() == 'A') {
 		this->PlayHand.push_back(new Amethyst);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'E'); i++) {
+	else if(s.front() == 'E') {
 		this->PlayHand.push_back(new Emerald);
 	}
 }

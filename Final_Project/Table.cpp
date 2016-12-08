@@ -33,7 +33,7 @@ bool Table::win(std::string& s){
 
 void Table::print(ostream& os){
 	for(int i = 0; i < 2; i++){
-		os << Players[i].getMaxNumChains() << " " << Players[i].getNumChains() << " " << Players[i] << Players[i].PlayerHand << endl;
+		os << Players[i].getMaxNumChains() << " " << Players[i].getNumChains() << " " << Players[i] << Players[i].PlayerHand.printHand() << endl;
 		os << "^^^^^^^^" << endl;
 	}
 	os << Library << endl;
@@ -83,9 +83,10 @@ Table::Table(istream& is, CardFactory* cf){
 	cout << lcontent << endl;
 	istringstream player2(lcontent);
 	this->Players[1] = Player(player2, cf);
+	cout << "PLAYERDEUX :" << this->Players[1] << endl;
 	loading.clear();
 	lcontent.clear();
-	cout << "PLAYERDEUX :" << this->Players[1] << endl;
+	
 	
 	//Deck load
 	while(getline(is,loading)){

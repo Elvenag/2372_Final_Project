@@ -159,7 +159,7 @@ inline Chain<Quartz>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
 		this->push_back(new Quartz);
 	}
 	cardType = "Quartz";
@@ -169,7 +169,7 @@ inline Chain<Hematite>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'H'); i++) {
 		this->push_back(new Hematite);
 	}
 	cardType = "Hematite";
@@ -179,7 +179,7 @@ inline Chain<Obsidian>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {
 		this->push_back(new Obsidian);
 	}
 	cardType = "Obsidian";
@@ -189,7 +189,7 @@ inline Chain<Malachite>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
 		this->push_back(new Malachite);
 	}
 	cardType = "Malachite";
@@ -199,7 +199,7 @@ inline Chain<Turquoise>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'T'); i++) {
 		this->push_back(new Turquoise);
 	}
 	cardType = "Turquoise";
@@ -209,7 +209,7 @@ inline Chain<Amethyst>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'A'); i++) {
 		this->push_back(new Amethyst);
 	}
 	cardType = "Amethyst";
@@ -219,7 +219,7 @@ inline Chain<Emerald>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+	for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'E'); i++) {
 		this->push_back(new Emerald);
 	}
 	cardType = "Emerald";

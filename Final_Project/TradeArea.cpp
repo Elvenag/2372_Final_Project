@@ -75,7 +75,7 @@ TradeArea::TradeArea(istream& is, CardFactory* cf){
 	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
 		this->area.push_back(new Malachite);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'T'); i++) {
+	for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'T'); i++) {
 		this->area.push_back(new Turquoise);
 	}
 	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {

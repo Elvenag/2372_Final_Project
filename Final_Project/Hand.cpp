@@ -52,7 +52,7 @@ Hand::Hand(istream& is, CardFactory* cf){
 	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
 		this->PlayHand.push_back(new Quartz);
 	}
-	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'H'); i++) {
+	for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'H'); i++) {
 		this->PlayHand.push_back(new Hematite);
 	}
 	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {

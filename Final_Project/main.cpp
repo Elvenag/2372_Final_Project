@@ -1,3 +1,9 @@
+/*
+CARD GAME PROJECT
+Mathis Marcotte, 7677347
+Mathieu Perron, 7698299
+Main CPP File
+*/
 #include <iostream>
 #include <string>
 #include"Table.h"

@@ -35,42 +35,35 @@ Player::Player(istream & is, CardFactory * cf)
 	pos2 = s.find(" ",pos+1);
 	converter3 << s.substr(pos,pos2-pos);
 	converter3 >> this->coins;
-	/*
+	
 	for(int i = 0; i < currentnumchains;i++){
 		getline(is,s);
 		if(s.front() == 'Q'){
-			istringstream chaining(s);;
-			this->PlayerChains.push_back(Chain<Quartz>(chaining,cf));
+			istringstream chaining(s);
+			this->PlayerChains.emplace_back(Chain<Quartz>(chaining,cf));
 		}else if(s.front() == 'H'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Hematite>(chaining,cf);
-			this->PlayerChains.push_back(c);
+			this->PlayerChains.emplace_back(Chain<Hematite>(chaining,cf));
 		} else if(s.front() == 'O'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Obsidian>(chaining,cf);
-			this->PlayerChains.push_back(c);
-		}else if(s.front() == 'Malachite'){
+			this->PlayerChains.emplace_back(Chain<Obsidian>(chaining,cf));
+		}else if(s.front() == 'M'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Malachite>(chaining,cf);
-			this->PlayerChains.push_back(c);
-		}else if(s.front() == 'Turquoise'){
+			this->PlayerChains.emplace_back(Chain<Malachite>(chaining,cf));
+		}else if(s.front() == 'T'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Turquoise>(chaining,cf);
-			this->PlayerChains.push_back(c);
+			this->PlayerChains.emplace_back(Chain<Turquoise>(chaining,cf));
 		}else if(s.front() == 'R'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Ruby>(chaining,cf);
-			this->PlayerChains.push_back(c);
+			this->PlayerChains.emplace_back(Chain<Ruby>(chaining,cf));
 		}else if(s.front() == 'A'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Amethyst>(chaining,cf);
-			this->PlayerChains.push_back(c);
+			this->PlayerChains.emplace_back(Chain<Amethyst>(chaining,cf));
 		}else if(s.front() == 'E'){
 			istringstream chaining(s);
-			Chain<class Card> c = Chain<Emerald>(chaining,cf);
-			this->PlayerChains.push_back(c);
+			this->PlayerChains.emplace_back(Chain<Emerald>(chaining,cf));
 		}
-	}*/
+	}
 	string loadhand;
 	while(getline(is,s)){
 		loadhand+=s;

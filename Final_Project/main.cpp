@@ -87,7 +87,16 @@ int main(){
 								break;
 							}
 							else {
-								t.GTS.trade(answer);
+								bool* added = new bool(false);
+								for (int j = 0; j < p.getNumChains(); j++) {
+									if (p[j].cardType == answer) {
+										*added = true;
+										p[j] += t.GTS.trade(answer);
+									}
+								}
+								if (!*added) {
+									p.addCardAndMakeChain(t.GTS.trade(answer));
+								}
 							}
 						}
 					}
@@ -131,7 +140,7 @@ int main(){
 							int ianswer;
 							cout << "Choose a card number to discard (1-" << p.PlayerHand.PlayHand.size() << ")" << endl;
 							cin >> ianswer;
-							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)&&(ianswer <= p.PlayerHand.PlayHand.size())) {
+							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)) {
 								discarded = p.PlayerHand[ianswer-1];
 							}
 							cout<< discarded->getName() << " discarded" << endl;

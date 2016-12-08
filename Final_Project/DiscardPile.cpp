@@ -44,6 +44,7 @@ ostream& operator<<(ostream& os,const DiscardPile& Grave){
 		os << "Empty discard pile";
 		return os;
 	}
-	os << Grave.top();
+	
+	os <<"Discard Pile : " << Grave.top()->getName();
 	return os;
 }

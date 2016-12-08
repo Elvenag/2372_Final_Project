@@ -74,7 +74,13 @@ int main(){
 							cout << t.GTS << endl;
 							cout << "Insert name of card you wish to trade for or done" << endl;
 							cin >> answer;
-							if (answer == "done" || (t.GTS.numCards() != 0)) {
+							if (answer == "done" || (t.GTS.numCards() == 0)) {
+								int gtssize = t.GTS.area.size();
+								for(int i = 0; i < gtssize;i++){
+									string discarded = t.GTS.area.front()->getName();
+									t.Grave+= t.GTS.trade(discarded);
+								}
+								cout<< t.Grave << endl;
 								break;
 							}
 							else {

@@ -50,8 +50,9 @@ int main(){
 			}
 			else {
 				for (int i = 0; i < 2; i++) {
+					cout << t.Players[i].getName() << "'s turn"<<endl;
 					Player& p = t.Players[i];
-					cout << t;
+					cout << t <<endl;
 					if ((p.getNumCoins() >= 3) && (p.getMaxNumChains() == 2)) {
 						cout << "Buy new chain? (Y or N)" << endl;
 						cin >> answer;
@@ -65,12 +66,14 @@ int main(){
 							}
 						}
 					}
+					cout << endl;
 					p.PlayerHand += t.Library.draw();
-					cout << p.getName() << "'s hand: " << endl;
-					p.printHand(cout, true);
 					cout << endl;
 					if (t.GTS.numCards() != 0) {
 						while (true) {
+							cout << t.Players[i] << endl;
+							cout << p.getName() << "'s hand: ";
+							p.printHand(cout, true);
 							cout << t.GTS << endl;
 							cout << "Insert name of card you wish to trade for or done" << endl;
 							cin >> answer;
@@ -105,9 +108,8 @@ int main(){
 							p.addCardAndMakeChain(c);
 							
 						}
-						cout << "numchains: "<< t.Players[i].getNumChains() << endl;
 						cout << t.Players[i] << endl;
-						cout << t.Players[i].getName() << "'s hand: " << endl;
+						cout << t.Players[i].getName() << "'s hand: ";
 						t.Players[i].printHand(cout, true);
 						cout << endl;
 						cout << "Play next card? (Y or N)" << endl;
@@ -172,14 +174,14 @@ int main(){
 						cin >> answer;
 						if (answer == "Y") {
 							cout << t.GTS.trade(trading->getName())->getName() << endl;
-							bool added = false;
+							bool* added = new bool(false);
 							for (int j = 0; j < p.getNumChains(); j++) {
 								if (p[j].cardType == trading->getName()) {
-									bool added = true;
+									*added = true;
 									p[j] += trading;
 								}
 							}
-							if (!added) {
+							if (!*added) {
 								p.addCardAndMakeChain(trading);
 							}
 						}

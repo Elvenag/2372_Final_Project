@@ -63,7 +63,7 @@ ostream& operator<<(ostream& os,const Player& p){
 		os << typeid(elem).name() <<endl;
 	}*/
 	for(int i = 0; i < p.PlayerChains.size(); i++){
-		Card* c = p.PlayerChains[i].cardType;
+//		Card* c = p.PlayerChains[i].cardType;
 		os << p.PlayerChains.at(i) << endl;
 	}
 	return os;
@@ -111,7 +111,7 @@ void Player::addChain(Card* c) {
 		Chain<Emerald> newChain;
 		cardType = new Emerald;
 	}
-	newChain.cardType = cardType;
+	newChain.cardType = cardType->getName();
 	newChain+=c;
 	PlayerChains.push_back(newChain);
 }

@@ -15,7 +15,7 @@ using std::vector;
 
 template<class T> class Chain_Base: public vector<T*>{	
 public:
-	T* cardType;
+	string cardType;
 	using std::vector<T*>::vector;
 	Chain_Base<T>& operator+=(Card* c);
 	friend ostream& operator<<(ostream& os,const Chain_Base<Card>& c);
@@ -27,23 +27,20 @@ template<class Card> class Chain : public Chain_Base<Card> {};
 
 template<> class Chain<Ruby> : public Chain_Base<Ruby> {
 public:
-	Ruby* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Ruby"; };
 	Chain(istream& is, CardFactory* cf);
 };
 
 template<> class Chain<Quartz> : public Chain_Base<Quartz> {
 public:
-	Quartz* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Quartz"; };
 	Chain(istream& is, CardFactory* cf);
 	
 };
 
 template<> class Chain<Hematite> : public Chain_Base<Hematite> {
 public:
-	Hematite* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Hematite"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -51,17 +48,15 @@ public:
 
 template<> class Chain<Obsidian> : public Chain_Base<Obsidian> {
 public:
-	Obsidian* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Obsidian"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
 };
 
-template<> class Chain < Malachite > : public Chain_Base<Malachite> {
+template<> class Chain<Malachite> : public Chain_Base<Malachite> {
 public:
-	Malachite* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Malachite"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -69,8 +64,7 @@ public:
 
 template<> class Chain<Turquoise> : public Chain_Base<Turquoise> {
 public:
-	Turquoise* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Turquoise"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -78,8 +72,7 @@ public:
 
 template<> class Chain<Amethyst> : public Chain_Base<Amethyst> {
 public:
-	Amethyst* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Amethyst"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -87,8 +80,7 @@ public:
 
 template<> class Chain<Emerald> : public Chain_Base<Emerald> {
 public:
-	Emerald* cardType;
-	Chain() : Chain_Base() {};
+	Chain() : Chain_Base() { cardType = "Emerald"; };
 	//int sell();
 	Chain(istream& is, CardFactory* cf);
 
@@ -99,26 +91,33 @@ public:
 template<class Card>
 inline int Chain_Base<Card>::sell()
 {
-	int cards = 0;
-	int result = 0;
-	for (int i = 0; i <= 4; i++) {
-		cards = cardType->getCardsPerCoin(i);
-		if (cards > this->size()) {
-			break;
+	if (this->size() < 1)
+		return 0;
+	else {
+		Card* card = this->at(0);
+		int cards = 0;
+		int result = 0;
+		for (int i = 0; i <= 4; i++) {
+			cards = card->getCardsPerCoin(i);
+			if (cards > this->size()) {
+				break;
+			}
+			else {
+				result = cards;
+			}
 		}
-		else {
-			result = cards;
-		}
+		return result;
 	}
-	return result;
 }
 
 template<class T>
 inline Chain_Base<T>& Chain_Base<T>::operator+=(Card * c)
 {
 	try {
-		if (c->getName() == cardType->getName())
-			this->push_back(c);
+		if (c->getName() == cardType) {
+			auto a=static_cast<T*>(c);
+			this->push_back(a);
+		}
 		else {
 			throw IllegalType("Card type does not match Chain type.");
 		}
@@ -137,10 +136,10 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 		os << "";
 		return os;
 	}
-	os << c.cardType->getName();
+	os << c.cardType;
 	for (std::size_t i = 0; i < c.size(); i++) {
 		os << " ";
-		c.cardType->print(os);
+		
 	}
 	return os;
 }

@@ -89,20 +89,20 @@ int main(){
 						}
 						bool played = false;
 						Card* c = p.PlayerHand.play();
-						/*for (std::size_t n = 0; n < p.getNumChains(); n++) {
-							if ((p[n].cardType->getName()) == (c->getName())) {
+						for (std::size_t n = 0; n < p.getNumChains(); n++) {
+							if ((p[n].cardType) == (c->getName())) {
 								p[n] += c;
 								played = true;
 							}
-						}*/
+						}
 						if (played == false) {
 							p.addCardAndMakeChain(c);
 							
 						}
-						cout << "numchains: "<< p.getNumChains() << endl;
-						cout << p << endl;
-						cout << p.getName() << "'s hand: " << endl;
-						p.printHand(cout, true);
+						cout << "numchains: "<< t.Players[i].getNumChains() << endl;
+						cout << t.Players[i] << endl;
+						cout << t.Players[i].getName() << "'s hand: " << endl;
+						t.Players[i].printHand(cout, true);
 						cout << endl;
 						cout << "Play next card? (Y or N)" << endl;
 						cin >> answer;
@@ -164,7 +164,7 @@ int main(){
 						cin >> answer;
 						if (answer == "Y") {
 							cout << t.GTS.trade(n->getName())->getName() << endl;
-							/*bool added = false;
+							bool added = false;
 							for (std::size_t j = 0; j < p.getNumChains(); j++) {
 								if (typeid(p[j].cardType) == typeid(n)) {
 									bool added = true;
@@ -173,7 +173,7 @@ int main(){
 							}
 							if (!added) {
 								p.addCardAndMakeChain(n);
-							}*/
+							}
 						}
 					}
 					if(t.Library.size() > 0){
@@ -197,7 +197,6 @@ int main(){
 		t.win(winner);
 		break;
 	}
-	
 
 }
 

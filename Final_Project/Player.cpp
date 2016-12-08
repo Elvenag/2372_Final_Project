@@ -21,7 +21,8 @@ Player::Player(istream & is, CardFactory * cf)
 	this->PlayerName = s.substr(0, pos);
 	pos = s.find(" ", pos+1);
 	stringstream ss;
-	//this->coins = s.substr(0, pos);
+	ss << s.substr(pos+1);
+	ss>>this->coins;
 }
 
 string Player::getName(){

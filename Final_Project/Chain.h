@@ -8,6 +8,7 @@ Chain CLASS HEADER FILE
 #define Chain_H
 #include <typeinfo>
 #include "CardFactory.h"
+#include <algorithm>
 #include <vector>
 using std::vector;
 
@@ -144,7 +145,7 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 	}
 	return os;
 }
-/*
+
 inline Chain<Ruby>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
@@ -219,8 +220,8 @@ inline Chain<Emerald>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'E'); i++) {
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'E'); i++) {
 		this->push_back(new Emerald);
 	}
 	cardType = "Emerald";
-}*/
+}

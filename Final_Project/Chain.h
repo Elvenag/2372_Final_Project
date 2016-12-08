@@ -6,6 +6,7 @@ Chain CLASS HEADER FILE
 */
 #ifndef Chain_H
 #define Chain_H
+#include <algorithm>
 #include <typeinfo>
 #include "CardFactory.h"
 #include <vector>

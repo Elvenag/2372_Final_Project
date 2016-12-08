@@ -7,6 +7,8 @@ Table CLASS CPP FILE
 #include "Table.h"
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 bool Table::win(std::string& s){
@@ -53,10 +55,75 @@ ostream& operator<<(ostream &os,const Table& t){
 }
 
 Table::Table(istream& is, CardFactory* cf){
-	this->Players[0] = Player(is, cf);
-	this->Players[1] = Player(is, cf);
-	this->Library = Deck(is,cf);
-	this->Grave = DiscardPile(is,cf);
-	this->GTS = TradeArea(is,cf);
+	//Player1 load
+	string loading;
+	string lcontent;
+	while(getline(is,loading)){
+		if(loading == "^^^^^^^^"){
+			break;
+		}
+		lcontent+=loading;
+		lcontent.push_back('\n');
+	}
+	cout << lcontent << endl;
+	istringstream player1(lcontent);
+	this->Players[0] = Player(player1, cf);
+	loading.clear();
+	lcontent.clear();
+	cout << "PLAYERUN :" << this->Players[0] << endl;
+	
+	//Player2 load
+	while(getline(is,loading)){
+		if(loading == "^^^^^^^^"){
+			break;
+		}
+		lcontent+=loading;
+		lcontent.push_back('\n');
+	}
+	cout << lcontent << endl;
+	istringstream player2(lcontent);
+	this->Players[1] = Player(player2, cf);
+	loading.clear();
+	lcontent.clear();
+	cout << "PLAYERDEUX :" << this->Players[1] << endl;
+	
+	//Deck load
+	while(getline(is,loading)){
+		if(loading == "^^^^^^^^"){
+			break;
+		}
+		lcontent+=loading;
+		lcontent.push_back('\n');
+	}
+	cout << lcontent << endl;
+	istringstream Lib(lcontent);
+	this->Library = Deck(Lib,cf);
+	loading.clear();
+	lcontent.clear();
+	cout << "deck : " << this->Library << endl;
+	
+	//DiscardPile load
+	while(getline(is,loading)){
+		if(loading == "^^^^^^^^"){
+			break;
+		}
+		lcontent+=loading;
+		lcontent.push_back('\n');
+	}
+	istringstream exile(lcontent);
+	this->Grave = DiscardPile(exile,cf);
+	loading.clear();
+	lcontent.clear();
+	
+	//TradeArea load
+	while(getline(is,loading)){
+		if(loading == "^^^^^^^^"){
+			break;
+		}
+		lcontent+=loading;
+		lcontent.push_back('\n');
+	}
+	istringstream trader(lcontent);
+	this->GTS = TradeArea(trader,cf);
 }
 

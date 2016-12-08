@@ -11,7 +11,9 @@ int main(){
 		cout << "Load game or new? (load or new)" << endl;
 		cin >> answer;
 		if (answer == "load") {
-			//TODO: load game
+			CardFactory cf;
+			ifstream fileload("save.txt");
+			Table t = Table(fileload,&cf);
 			break;
 		}
 		else if (answer == "new") {

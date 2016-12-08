@@ -16,8 +16,9 @@ Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
 Player::Player(istream & is, CardFactory * cf)
 {
 	string s;
-	is >> s;
-	size_t pos = s.find(" ");
+	getline(is,s);
+	cout << "HERE :" << s << endl;
+	/*size_t pos = s.find(" ");
 	this->PlayerName = s.substr(0, pos);
 	pos = s.find(" ", pos+1);
 	stringstream ss;
@@ -32,8 +33,8 @@ Player::Player(istream & is, CardFactory * cf)
 	int numChains = 0;
 	ss >> numChains;
 	for (int i = 0; i < numChains; i++) {
-
-	}
+		
+	}*/
 }
 
 string Player::getName(){

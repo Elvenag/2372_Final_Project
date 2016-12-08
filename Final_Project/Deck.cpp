@@ -8,6 +8,8 @@ Deck CLASS CPP FILE
 #include "Deck.h"
 #include "CardFactory.h"
 #include <algorithm>
+#include <fstream>
+#include <string>
 /*
 Deck::~Deck()
 {
@@ -36,7 +38,7 @@ ostream & operator<<(ostream & os, const Deck& d)
 Deck::Deck(istream & in, CardFactory * cf)
 {
 	string s;
-	in >> s;
+	getline(in,s);
 	for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'Q'); i++) {
 		this->push_back(new Quartz);
 	}

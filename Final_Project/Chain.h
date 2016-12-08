@@ -138,7 +138,7 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 	}
 	os << c.cardType;
 	for (std::size_t i = 0; i < c.size(); i++) {
-		os << " ";
+		os << " " << c.at(i);
 		
 	}
 	return os;

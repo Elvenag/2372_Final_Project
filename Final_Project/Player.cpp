@@ -120,24 +120,22 @@ void Player::addCardAndMakeChain(Card* c) {
 	if (getNumChains() < getMaxNumChains()) {
 		addChain(c);
 	}
-	/*else {
+	else {
 		cout << "Which chain will be sold? (1-" << getNumChains() << ")" << endl;
-		for (std::list<Chain<Card>>::iterator it = PlayerChains.begin(); it != PlayerChains.end(); ++it) {
-			cout << ' ' << *it << endl;
+		for (std::size_t i = 0; i < PlayerChains.size(); i++) {
+			cout << ' ' << PlayerChains[i] << endl;
 		}
 		while (true) {
 			int ianswer;
 			cin >> ianswer;
 			if ((ianswer < getMaxNumChains()) && (ianswer > 0)) {
-				std::list<Chain<Card>>::iterator it = PlayerChains.begin();
-				advance(it, ianswer);
-				*this += it->sell();
-				it = PlayerChains.erase(it);
+				*this += PlayerChains[ianswer].sell();
+				PlayerChains.erase(PlayerChains.begin() + ianswer - 1);
 				break;
 			}else{
 				break;
 			}
 		}
 		addChain(c);
-	}*/
+	}
 }

@@ -63,8 +63,7 @@ Deck::Deck(istream & in, CardFactory * cf)
 	for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'E'); i++) {
 		this->push_back(new Emerald);
 	}
-	cf->gameDeck = *this;
-	cf->getDeck();
+	cf->gameDeck = *this;;
 }
 
 

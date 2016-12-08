@@ -59,29 +59,30 @@ Hand::~Hand(){
 
 Hand::Hand(istream& is, CardFactory* cf){
 	string s;
-	getline(is, s);
+	while(getline(is, s)){
 	if(s.front() == 'Q') {
 		this->PlayHand.push_back(new Quartz);
-	}
-	else if(s.front() == 'H') {
-		this->PlayHand.push_back(new Hematite);
-	}
-	else if(s.front() == 'O') {
-		this->PlayHand.push_back(new Obsidian);
-	}
-	else if(s.front() == 'M') {
-		this->PlayHand.push_back(new Malachite);
-	}
-	else if(s.front() == 'T') {
-		this->PlayHand.push_back(new Turquoise);
-	}
-	else if(s.front() == 'R') {
-		this->PlayHand.push_back(new Ruby);
-	}
-	else if(s.front() == 'A') {
-		this->PlayHand.push_back(new Amethyst);
-	}
-	else if(s.front() == 'E') {
-		this->PlayHand.push_back(new Emerald);
+		}
+		else if(s.front() == 'H') {
+			this->PlayHand.push_back(new Hematite);
+		}
+		else if(s.front() == 'O') {
+			this->PlayHand.push_back(new Obsidian);
+		}
+		else if(s.front() == 'M') {
+			this->PlayHand.push_back(new Malachite);
+		}
+		else if(s.front() == 'T') {
+			this->PlayHand.push_back(new Turquoise);
+		}
+		else if(s.front() == 'R') {
+			this->PlayHand.push_back(new Ruby);
+		}
+		else if(s.front() == 'A') {
+			this->PlayHand.push_back(new Amethyst);
+		}
+		else if(s.front() == 'E') {
+			this->PlayHand.push_back(new Emerald);
+		}
 	}
 }

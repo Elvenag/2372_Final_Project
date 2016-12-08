@@ -24,22 +24,18 @@ Player::Player(istream & is, CardFactory * cf)
 	converter >> this->MaxNumChains;
 
 	stringstream converter2;	
-cout << "HERE :" << this->MaxNumChains << endl;
 	size_t pos2 = s.find(" ", pos+1);
 	converter2 << s.substr(pos, pos2);
 	int currentnumchains; 
 	converter2 >> currentnumchains;
 
-cout << "HERE :" << currentnumchains << endl;
 	pos = s.find(" ", pos2+1);
 	this->PlayerName = s.substr(pos2+1, pos-pos2-1);
-cout << "HERE :" << this->PlayerName << endl;
 	stringstream converter3;
 	pos2 = s.find(" ",pos+1);
 	converter3 << s.substr(pos,pos2-pos);
 	converter3 >> this->coins;
-cout << "HERE :" << coins << endl;
-	
+	/*
 	for(int i = 0; i < currentnumchains;i++){
 		getline(is,s);
 		if(s.front() == 'Q'){
@@ -74,12 +70,14 @@ cout << "HERE :" << coins << endl;
 			Chain<class Card> c = Chain<Emerald>(chaining,cf);
 			this->PlayerChains.push_back(c);
 		}
-	}
-	
+	}*/
+	string loadhand;
 	while(getline(is,s)){
-		istringstream handing(s);
-		this->PlayerHand = Hand(handing,cf);
+		loadhand+=s;
+		loadhand.push_back('\n');
 	}
+	istringstream handing(loadhand);
+	this->PlayerHand = Hand(handing,cf);
 }
 
 string Player::getName(){

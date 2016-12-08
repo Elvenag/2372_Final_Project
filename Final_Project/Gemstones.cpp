@@ -10,7 +10,7 @@ Card CLASS CPP FILE
 using namespace std;
 
 ostream& operator<<(ostream &os,const Card& c){
-    return os << c.getName().front();
+    return os << c.getName();
 }
 
 //Quartz

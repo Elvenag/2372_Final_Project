@@ -132,8 +132,6 @@ void Player::addCardAndMakeChain(Card* c) {
 				*this += PlayerChains[ianswer].sell();
 				PlayerChains.erase(PlayerChains.begin() + ianswer - 1);
 				break;
-			}else{
-				break;
 			}
 		}
 		addChain(c);

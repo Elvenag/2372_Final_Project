@@ -46,8 +46,6 @@ int main(){
 			if (answer == "p") {
 				ofstream save;
 				save.open("save.txt");
-				save << "Player " <<t.Players[0].getMaxNumChains() << " " << t.Players[0].getNumChains() << " " <<  t.Players[0];
-				save << "Hand " << t.Players[0];
 				t.print(save);
 				break;
 			}

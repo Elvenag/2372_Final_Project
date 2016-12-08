@@ -31,10 +31,13 @@ bool Table::win(std::string& s){
 
 void Table::print(ostream& os){
 	for(int i = 0; i < 2; i++){
-		os << Players[i] << endl;
+		os << Players[i].getMaxNumChains() << " " << Players[i].getNumChains() << " " << Players[i] << Players[i].PlayerHand << endl;
+		os << "^^^^^^^^" << endl;
 	}
 	os << Library << endl;
+	os << "^^^^^^^^" << endl;
 	os << Grave << endl;
+	os << "^^^^^^^^" << endl;
 	os << GTS << endl;
 }
 

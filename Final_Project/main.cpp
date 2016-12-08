@@ -13,8 +13,9 @@ int main(){
 		if (answer == "load") {
 			CardFactory cf;
 			ifstream fileload("save.txt");
-			Table t = Table(fileload,&cf);
-			break;
+			t = Table(fileload,&cf);
+			cout << "Game loaded with table:" << endl;
+			cout << t << endl;
 		}
 		else if (answer == "new") {
 			cout << "Player 1's name: " << endl;

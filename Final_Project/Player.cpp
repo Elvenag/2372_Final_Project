@@ -36,32 +36,72 @@ Player::Player(istream & is, CardFactory * cf)
 	converter3 << s.substr(pos,pos2-pos);
 	converter3 >> this->coins;
 	
-	for(int i = 0; i < currentnumchains;i++){
+	for(int k = 0; k < currentnumchains;k++){
 		getline(is,s);
 		if(s.front() == 'Q'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Quartz>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
+				if(i == 1){
+					this->addChain(new Quartz);
+				}else{
+					this->PlayerChains[k]+= (new Quartz);
+				}
+			}
 		}else if(s.front() == 'H'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Hematite>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'H'); i++) {
+				if(i == 1){
+					this->addChain(new Hematite);
+				}else{
+					this->PlayerChains[k]+= (new Hematite);
+				}
+			}
 		} else if(s.front() == 'O'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Obsidian>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {
+				if(i == 1){
+					this->addChain(new Obsidian);
+				}else{
+					this->PlayerChains[k]+= (new Obsidian);
+				}
+			}
 		}else if(s.front() == 'M'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Malachite>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
+				if(i == 1){
+					this->addChain(new Malachite);
+				}else{
+					this->PlayerChains[k]+= (new Malachite);
+				}
+			}
 		}else if(s.front() == 'T'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Turquoise>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'T'); i++) {
+				if(i == 1){
+					this->addChain(new Turquoise);
+				}else{
+					this->PlayerChains[k]+= (new Turquoise);
+				}
+			}
 		}else if(s.front() == 'R'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Ruby>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+				if(i == 1){
+					this->addChain(new Ruby);
+				}else{
+					this->PlayerChains[k]+= (new Ruby);
+				}
+			}
 		}else if(s.front() == 'A'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Amethyst>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'A'); i++) {
+				if(i == 1){
+					this->addChain(new Amethyst);
+				}else{
+					this->PlayerChains[k]+= (new Amethyst);
+				}
+			}
 		}else if(s.front() == 'E'){
-			istringstream chaining(s);
-			this->PlayerChains.emplace_back(Chain<Emerald>(chaining,cf));
+			for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'E'); i++) {
+				if(i == 1){
+					this->addChain(new Emerald);
+				}else{
+					this->PlayerChains[k]+= (new Emerald);
+				}
+			}
 		}
 	}
 	string loadhand;

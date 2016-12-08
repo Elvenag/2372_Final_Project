@@ -65,13 +65,11 @@ Table::Table(istream& is, CardFactory* cf){
 		lcontent+=loading;
 		lcontent.push_back('\n');
 	}
-	cout << lcontent << endl;
 	istringstream player1(lcontent);
 	this->Players[0] = Player(player1, cf);
 	loading.clear();
 	lcontent.clear();
-	cout << "PLAYERUN :" << this->Players[0] << endl;
-	cout << "PLAYERUNHAND :" << this->Players[0].PlayerHand << endl;
+	
 	//Player2 load
 	while(getline(is,loading)){
 		if(loading == "^^^^^^^^"){
@@ -80,14 +78,10 @@ Table::Table(istream& is, CardFactory* cf){
 		lcontent+=loading;
 		lcontent.push_back('\n');
 	}
-	cout << lcontent << endl;
 	istringstream player2(lcontent);
 	this->Players[1] = Player(player2, cf);
-	cout << "PLAYERDEUX :" << this->Players[1] << endl;
-	cout << "PLAYERDEUXHAND :" << this->Players[1].PlayerHand << endl;
 	loading.clear();
 	lcontent.clear();
-	
 	
 	//Deck load
 	while(getline(is,loading)){
@@ -97,7 +91,6 @@ Table::Table(istream& is, CardFactory* cf){
 		lcontent+=loading;
 		lcontent.push_back('\n');
 	}
-	cout << lcontent << endl;
 	istringstream Lib(lcontent);
 	cf->gameDeck = Deck(Lib,cf);
 	this->Library = cf->getDeck();

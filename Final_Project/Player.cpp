@@ -10,8 +10,6 @@ Player CLASS CPP FILE
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-//	PlayerChains.push_back(Chain<Card>());
-//	PlayerChains.push_back(Chain<Card>());
 };
 
 string Player::getName(){
@@ -57,13 +55,7 @@ void Player::printHand(ostream& os, bool b){
 
 ostream& operator<<(ostream& os,const Player& p){
 	os << p.PlayerName << " " << p.coins << " coins" << endl;
-	/*list<Chain<Card>>::const_iterator it=p.PlayerChains.begin();
-	for(it=p.PlayerChains.begin(); it!=p.PlayerChains.end(); it++){
-		Chain<class Card> elem = *it;
-		os << typeid(elem).name() <<endl;
-	}*/
 	for(int i = 0; i < p.PlayerChains.size(); i++){
-//		Card* c = p.PlayerChains[i].cardType;
 		os << p.PlayerChains.at(i) << endl;
 	}
 	return os;
@@ -128,7 +120,7 @@ void Player::addCardAndMakeChain(Card* c) {
 		while (true) {
 			int ianswer;
 			cin >> ianswer;
-			if ((ianswer < getMaxNumChains()) && (ianswer > 0)) {
+			if ((ianswer <= getMaxNumChains()) && (ianswer > 0)) {
 				*this += PlayerChains[ianswer].sell();
 				PlayerChains.erase(PlayerChains.begin() + ianswer - 1);
 				break;

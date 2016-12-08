@@ -17,12 +17,23 @@ Player::Player(istream & is, CardFactory * cf)
 {
 	string s;
 	is >> s;
-	std::size_t pos = s.find(" ");
+	size_t pos = s.find(" ");
 	this->PlayerName = s.substr(0, pos);
 	pos = s.find(" ", pos+1);
 	stringstream ss;
-	ss << s.substr(pos+1);
+	size_t pos2 = s.find(" ", pos + 1);
+	ss << s.substr(pos + 1, pos2);
 	ss>>this->coins;
+	pos = s.find(" ", pos2 + 1);
+	ss << s.substr(pos2 + 1, pos);
+	ss >> this->MaxNumChains;
+	pos2 = s.find(" ", pos + 1);
+	ss << s.substr(pos2 + 1);
+	int numChains = 0;
+	ss >> numChains;
+	for (int i = 0; i < numChains; i++) {
+
+	}
 }
 
 string Player::getName(){

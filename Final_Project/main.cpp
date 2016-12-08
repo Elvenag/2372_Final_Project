@@ -1,10 +1,8 @@
 #include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
 #include <string>
-using std::string;
 #include"Table.h"
+#include <fstream>
+using namespace std;
 
 int main(){
 	string answer;
@@ -46,7 +44,12 @@ int main(){
 			cout << "Type p to pause, anything else to continue." << endl;
 			cin >> answer;
 			if (answer == "p") {
-				//TODO: save and quit
+				ofstream save;
+				save.open("save.txt");
+				save << "Player " <<t.Players[0].getMaxNumChains() << " " << t.Players[0].getNumChains() << " " <<  t.Players[0];
+				save << "Hand " << t.Players[0];
+				t.print(save);
+				break;
 			}
 			else {
 				for (int i = 0; i < 2; i++) {

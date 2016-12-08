@@ -103,7 +103,7 @@ inline int Chain_Base<Card>::sell()
 				break;
 			}
 			else {
-				result = cards;
+				result = i;
 			}
 		}
 		return result;

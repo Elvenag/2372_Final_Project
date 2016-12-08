@@ -7,10 +7,22 @@ Player CLASS CPP FILE
 #include "Player.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 Player::Player(string& s):PlayerName(s),coins(0),MaxNumChains(2){
-};
+}
+
+Player::Player(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	std::size_t pos = s.find(" ");
+	this->PlayerName = s.substr(0, pos);
+	pos = s.find(" ", pos+1);
+	stringstream ss;
+	//this->coins = s.substr(0, pos);
+}
 
 string Player::getName(){
 	return PlayerName;
@@ -121,7 +133,7 @@ void Player::addCardAndMakeChain(Card* c) {
 			int ianswer;
 			cin >> ianswer;
 			if ((ianswer <= getMaxNumChains()) && (ianswer > 0)) {
-				*this += PlayerChains[ianswer].sell();
+				*this += PlayerChains[ianswer-1].sell();
 				PlayerChains.erase(PlayerChains.begin() + ianswer - 1);
 				break;
 			}

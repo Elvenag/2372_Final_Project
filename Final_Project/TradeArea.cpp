@@ -8,6 +8,7 @@ TradeArea CLASS CPP FILE
 #include <string>
 #include <iostream>
 #include "TradeArea.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -56,5 +57,34 @@ ostream& operator<<(ostream &os,const TradeArea& ta){
 TradeArea::~TradeArea(){
 	while(!area.empty()){
 		area.pop_front();
+	}
+}
+
+TradeArea::TradeArea(istream& is, CardFactory* cf){
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
+		this->area.push_back(new Quartz);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'H'); i++) {
+		this->area.push_back(new Hematite);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {
+		this->area.push_back(new Obsidian);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
+		this->area.push_back(new Malachite);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'T'); i++) {
+		this->area.push_back(new Turquoise);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->area.push_back(new Ruby);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'A'); i++) {
+		this->area.push_back(new Amethyst);
+	}
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'E'); i++) {
+		this->area.push_back(new Emerald);
 	}
 }

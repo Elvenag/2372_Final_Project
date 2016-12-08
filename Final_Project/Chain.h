@@ -144,3 +144,83 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 	}
 	return os;
 }
+
+inline Chain<Ruby>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Ruby);
+	}
+	cardType = "Ruby";
+}
+
+inline Chain<Quartz>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Quartz);
+	}
+	cardType = "Quartz";
+}
+
+inline Chain<Hematite>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Hematite);
+	}
+	cardType = "Hematite";
+}
+
+inline Chain<Obsidian>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Obsidian);
+	}
+	cardType = "Obsidian";
+}
+
+inline Chain<Malachite>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Malachite);
+	}
+	cardType = "Malachite";
+}
+
+inline Chain<Turquoise>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Turquoise);
+	}
+	cardType = "Turquoise";
+}
+
+inline Chain<Amethyst>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Amethyst);
+	}
+	cardType = "Amethyst";
+}
+
+inline Chain<Emerald>::Chain(istream & is, CardFactory * cf)
+{
+	string s;
+	is >> s;
+	for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
+		this->push_back(new Emerald);
+	}
+	cardType = "Emerald";
+}

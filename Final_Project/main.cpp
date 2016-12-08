@@ -50,9 +50,9 @@ int main(){
 			}
 			else {
 				for (int i = 0; i < 2; i++) {
-					cout << t.Players[i].getName() << "'s turn"<<endl;
 					Player& p = t.Players[i];
 					cout << t <<endl;
+					cout << t.Players[i].getName() << "'s turn"<<endl;
 					if ((p.getNumCoins() >= 3) && (p.getMaxNumChains() == 2)) {
 						cout << "Buy new chain? (Y or N)" << endl;
 						cin >> answer;
@@ -68,12 +68,12 @@ int main(){
 					}
 					cout << endl;
 					p.PlayerHand += t.Library.draw();
-					cout << endl;
 					if (t.GTS.numCards() != 0) {
 						while (true) {
 							cout << t.Players[i] << endl;
 							cout << p.getName() << "'s hand: ";
 							p.printHand(cout, true);
+							cout << endl;
 							cout << t.GTS << endl;
 							cout << "Insert name of card you wish to trade for or done" << endl;
 							cin >> answer;
@@ -96,15 +96,15 @@ int main(){
 							cout<< "No play : No more Cards in Hand" << endl;
 							break;
 						}
-						bool played = false;
+						bool* played = new bool(false);
 						Card* c = p.PlayerHand.play();
 						for (std::size_t n = 0; n < p.getNumChains(); n++) {
 							if ((p[n].cardType) == (c->getName())) {
 								p[n] += c;
-								played = true;
+								*played = true;
 							}
 						}
-						if (played == false) {
+						if (*played == false) {
 							p.addCardAndMakeChain(c);
 							
 						}
@@ -134,7 +134,7 @@ int main(){
 							if ((ianswer <= p.PlayerHand.PlayHand.size())&&(ianswer > 0)&&(ianswer <= p.PlayerHand.PlayHand.size())) {
 								discarded = p.PlayerHand[ianswer-1];
 							}
-							cout<< "elem discaded " << discarded->getName() << endl;
+							cout<< discarded->getName() << " discarded" << endl;
 							t.Grave += discarded;
 						}else{
 							cout << "No Cards in hand" << endl;

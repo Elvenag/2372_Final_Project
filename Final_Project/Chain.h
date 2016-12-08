@@ -6,7 +6,6 @@ Chain CLASS HEADER FILE
 */
 #ifndef Chain_H
 #define Chain_H
-#include <algorithm>
 #include <typeinfo>
 #include "CardFactory.h"
 #include <vector>
@@ -98,7 +97,7 @@ inline int Chain_Base<Card>::sell()
 		Card* card = this->at(0);
 		int cards = 0;
 		int result = 0;
-		for (int i = 0; i <= 4; i++) {
+		for (int i = 1; i <= 4; i++) {
 			cards = card->getCardsPerCoin(i);
 			if (cards > this->size()) {
 				break;
@@ -145,7 +144,7 @@ inline ostream& operator<<(ostream & os,const Chain_Base<Card>& c)
 	}
 	return os;
 }
-
+/*
 inline Chain<Ruby>::Chain(istream & is, CardFactory * cf)
 {
 	string s;
@@ -224,4 +223,4 @@ inline Chain<Emerald>::Chain(istream & is, CardFactory * cf)
 		this->push_back(new Emerald);
 	}
 	cardType = "Emerald";
-}
+}*/

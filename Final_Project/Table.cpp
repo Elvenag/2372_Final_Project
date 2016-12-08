@@ -49,3 +49,11 @@ ostream& operator<<(ostream &os,const Table& t){
 	return os;
 }
 
+Table::Table(istream& is, CardFactory* cf){
+	this->Players[0] = Player(is, cf);
+	this->Players[1] = Player(is, cf);
+	this->Library = Deck(is,cf);
+	this->Grave = DiscardPile(is,cf);
+	this->GTS = TradeArea(is,cf);
+}
+

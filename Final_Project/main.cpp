@@ -163,22 +163,24 @@ int main(){
 					while ((t.Grave.dp.size() > 0) && (t.GTS.legal(t.Grave.top()))) {
 						t.GTS += t.Grave.pickUp();
 					}
-					
-					for (auto& n : t.GTS.area) {
+					list<Card*> temparea = t.GTS.area;
+					for (list<Card*>::iterator n=temparea.begin();n != temparea.end();n++) {
+						Card* trading = *n;
+						cout << p << endl;
 						cout << t.GTS << endl;
-						cout << "Trade for this card: " << n->getName() << "? (Y or N)" << endl;
+						cout << "Trade for this card: " << trading->getName() << "? (Y or N)" << endl;
 						cin >> answer;
 						if (answer == "Y") {
-							cout << t.GTS.trade(n->getName())->getName() << endl;
+							cout << t.GTS.trade(trading->getName())->getName() << endl;
 							bool added = false;
-							for (std::size_t j = 0; j < p.getNumChains(); j++) {
-								if (typeid(p[j].cardType) == typeid(n)) {
+							for (int j = 0; j < p.getNumChains(); j++) {
+								if (p[j].cardType == trading->getName()) {
 									bool added = true;
-									p[j] += n;
+									p[j] += trading;
 								}
 							}
 							if (!added) {
-								p.addCardAndMakeChain(n);
+								p.addCardAndMakeChain(trading);
 							}
 						}
 					}

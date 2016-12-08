@@ -142,7 +142,8 @@ void Player::buyThirdChain(){
 	if(MaxNumChains == 2 && coins >= 2){
 		MaxNumChains++;
 		coins -= 2;
-		PlayerChains.push_back(Chain<Card>());
+	}else{
+		cout << "Not Enough coins" << endl;
 	}
 }
 
@@ -162,6 +163,7 @@ ostream& operator<<(ostream& os,const Player& p){
 	return os;
 }
 
+//Adds a chain to the player
 void Player::addChain(Card* c) {
 	Chain<class Card> newChain;
 	Quartz q;
@@ -209,6 +211,7 @@ void Player::addChain(Card* c) {
 	PlayerChains.push_back(newChain);
 }
 
+//Adds sells a chain if the player has already max chain
 void Player::addCardAndMakeChain(Card* c) {
 	if (getNumChains() < getMaxNumChains()) {
 		addChain(c);

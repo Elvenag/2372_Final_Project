@@ -38,9 +38,11 @@ void Table::print(ostream& os){
 	}
 	os << Library << endl;
 	os << "^^^^^^^^" << endl;
-	os << Grave << endl;
+	Grave.print(os);
+	os<< endl;
 	os << "^^^^^^^^" << endl;
-	os << GTS << endl;
+	GTS.printTrade(os) ;
+	os << endl;
 }
 
 
@@ -109,7 +111,7 @@ Table::Table(istream& is, CardFactory* cf){
 	this->Grave = DiscardPile(exile,cf);
 	loading.clear();
 	lcontent.clear();
-	
+
 	//TradeArea load
 	while(getline(is,loading)){
 		if(loading == "^^^^^^^^"){
@@ -120,5 +122,11 @@ Table::Table(istream& is, CardFactory* cf){
 	}
 	istringstream trader(lcontent);
 	this->GTS = TradeArea(trader,cf);
+	loading.clear();
+	lcontent.clear();
+	
+	while(getline(is,loading)){
+		cout << "LOOP :" << loading << endl;
+	}
 }
 

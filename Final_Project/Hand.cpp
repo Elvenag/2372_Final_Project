@@ -40,6 +40,7 @@ ostream& operator<<(ostream &os,const Hand& h){
     return os;
 }
 
+//printing the hand
 string Hand::printHand(){
 	string h;
     for(int i = 0; i < PlayHand.size();i++){

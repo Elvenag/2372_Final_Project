@@ -38,7 +38,7 @@ Card * DiscardPile::top() const
 void DiscardPile::print(std::ostream & os)
 {
 	for (auto c : dp)
-		os << c;
+		os << c->getName() << " ";
 }
 
 ostream& operator<<(ostream& os,const DiscardPile& Grave){
@@ -55,21 +55,21 @@ DiscardPile::DiscardPile(std::istream& is, CardFactory* cf){
 	string s;
 	getline(is,s);
 	if(!(s == "Empty discard pile")){
-		if(s.substr(0,1) == "Q"){
+		if(s.front() == 'Q'){
    			this->dp.push_back(new Quartz);
-  	 	} else if(s.substr(0,1) == "H"){
+  	 	} else if(s.front() == 'H'){
   	 		this->dp.push_back(new Hematite);
-  	 	}else if(s.substr(0,1) == "O"){
+  	 	}else if(s.front() == 'O'){
   	 		this->dp.push_back(new Obsidian);
-  	 	}else if(s.substr(0,1) == "M"){
+  	 	}else if(s.front() == 'M'){
   	 		this->dp.push_back(new Malachite);
-  	 	}else if(s.substr(0,1) == "T"){
+  	 	}else if(s.front() == 'T'){
   	 		this->dp.push_back(new Turquoise);
-   		}else if(s.substr(0,1) == "R"){
+   		}else if(s.front() == 'R'){
    			this->dp.push_back(new Ruby);
-  	 	}else if(s.substr(0,1) == "A"){
+  	 	}else if(s.front() == 'A'){
   	 		this->dp.push_back(new Amethyst);
-  	 	}else if(s.substr(0,1) == "E"){
+  	 	}else if(s.front() == 'E'){
   	 		this->dp.push_back(new Emerald);
    		}
 		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {

@@ -45,6 +45,21 @@ int TradeArea::numCards(){
 	return area.size();
 }
 
+//printing to file print function
+ostream& TradeArea::printTrade(ostream &os){
+	if(area.size() == 0){
+		os << "Empty Trade Area" <<endl;
+		return os;
+	}else {
+		list<Card*>::const_iterator it;
+		for(it=area.begin(); it!=area.end(); it++){
+			Card* temp= *it;
+			os << temp->getName() << " ";
+		}
+		return os;
+	}
+}
+
 ostream& operator<<(ostream &os,const TradeArea& ta){
 	if(ta.area.size() == 0){
 		os << "Empty Trade Area" <<endl;
@@ -69,30 +84,30 @@ TradeArea::~TradeArea(){
 TradeArea::TradeArea(istream& is, CardFactory* cf){
 	string s;
 	getline(is,s);
-	if(!(s == "Empty discard pile")){
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'Q'); i++) {
-			this->area.push_back(new Quartz);
+	if(!(s == "Empty Trade Area")){
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'Q'); i++) {
+			*this+=(new Quartz);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'H'); i++) {
-			this->area.push_back(new Hematite);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'H'); i++) {
+			*this+=(new Hematite);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'O'); i++) {
-			this->area.push_back(new Obsidian);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'O'); i++) {
+			*this+=(new Obsidian);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'M'); i++) {
-			this->area.push_back(new Malachite);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'M'); i++) {
+			*this+=(new Malachite);
 		}
-		for (std::size_t i = 2; i < std::count(s.begin(), s.end(), 'T'); i++) {
-			this->area.push_back(new Turquoise);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'T'); i++) {
+			*this+=(new Turquoise);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'R'); i++) {
-			this->area.push_back(new Ruby);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'R'); i++) {
+			*this+=(new Ruby);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'A'); i++) {
-			this->area.push_back(new Amethyst);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'A'); i++) {
+			*this+=(new Amethyst);
 		}
-		for (std::size_t i = 1; i < std::count(s.begin(), s.end(), 'E'); i++) {
-			this->area.push_back(new Emerald);
+		for (std::size_t i = 0; i < std::count(s.begin(), s.end(), 'E'); i++) {
+			*this+=(new Emerald);
 		}
 	}
 }

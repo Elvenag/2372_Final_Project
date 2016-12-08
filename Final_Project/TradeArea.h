@@ -26,6 +26,7 @@ class TradeArea{
 		Card* trade(string s);
 		int numCards();
 		~TradeArea();
+		ostream& printTrade(ostream &os);
 		friend ostream& operator<<(ostream& os, const TradeArea& ta);
 };
 
